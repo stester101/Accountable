@@ -1626,7 +1626,7 @@ function GoalFormModal({title,goal,categoriesCfg,parentOpts,currentTarget,onClos
   const cats=(categoriesCfg||[]).filter(c=>c.enabled).map(c=>c.name);
   const [f,setF]=useState({
     label:goal?.label||"", unit:goal?.unit||"", target:currentTarget??"", type:goal?.type||"max",
-    step:null, private:goal?.private||false, icon:goal?.icon||"custom", startDate:goal?.startDate||goal?.targetHistory?.[0]?.date||(new Date().toISOString().slice(0,10)),
+    step:null, private:goal?.private||false, icon:goal?.icon||"custom", startDate:goal?.startDate||goal?.targetHistory?.[0]?.date||(todayKey()),
     cadence:goal?.cadence||"daily", days:goal?.days||[1,2,3,4,5], weeklyCount:goal?.weeklyCount||3,
     parentId:goal?.parentId||"",
   });
@@ -1780,7 +1780,7 @@ function UpdateTargetsModal({bodyTargets,onClose,onSave,onDelete}) {
   const [local,setLocal]=useState(bodyTargets.map(t=>({...t,history:[...(t.history||[])]})));
   const upd=(id,fld,v)=>setLocal(l=>l.map(t=>t.id===id?{...t,[fld]:v}:t));
   const updCi=(id,i,fld,v)=>setLocal(l=>l.map(t=>t.id===id?{...t,history:t.history.map((h,j)=>j===i?{...h,[fld]:v}:h)}:t));
-  const addCi=(id)=>setLocal(l=>l.map(t=>t.id===id?{...t,history:[...t.history,{date:new Date().toISOString().slice(0,10),value:t.current}]}:t));
+  const addCi=(id)=>setLocal(l=>l.map(t=>t.id===id?{...t,history:[...t.history,{date:todayKey(),value:t.current}]}:t));
   const delCi=(id,i)=>setLocal(l=>l.map(t=>t.id===id?{...t,history:t.history.filter((_,j)=>j!==i)}:t));
   const FORMATS=[["decimal","Decimal"],["stlb","Stones + lb"]];
   return (
@@ -1818,7 +1818,7 @@ function UpdateTargetsModal({bodyTargets,onClose,onSave,onDelete}) {
 }
 
 function CheckinModal({target,onClose,onSave}) {
-  const [date,setDate]=useState(new Date().toISOString().slice(0,10));
+  const [date,setDate]=useState(todayKey());
   const [value,setValue]=useState(target.current);
   return (
     <Modal onClose={onClose}>
@@ -1834,7 +1834,7 @@ function CheckinModal({target,onClose,onSave}) {
 }
 
 function AddTargetModal({onClose,onSave}) {
-  const [t,setT]=useState({label:"",unit:"",format:"decimal",start:0,target:0,startDate:new Date().toISOString().slice(0,10)});
+  const [t,setT]=useState({label:"",unit:"",format:"decimal",start:0,target:0,startDate:todayKey()});
   const set=(k,v)=>setT(x=>({...x,[k]:v}));
   const valid=t.label.trim();
   const FORMATS=[["decimal","Decimal"],["stlb","Stones + lb"]];
