@@ -788,11 +788,12 @@ function Accountable() {
   const importJSON = (obj) => {
     try{
       const d = obj.data || obj;
+      if(!d || typeof d!=="object" || !Array.isArray(d.goals) || (d.dailyLogs!==undefined && (typeof d.dailyLogs!=="object" || d.dailyLogs===null || Array.isArray(d.dailyLogs)))){ alert("That file doesn't look like an Accountable backup."); return; }
       if(d.goals) setGoals(d.goals);
       if(d.dailyLogs) setDailyLogs(d.dailyLogs);
       if(d.notes) setNotes(d.notes);
       if(d.moods) setMoods(d.moods);
-      if(d.bodyTargets) setBodyTargets(d.bodyTargets);
+      if(Array.isArray(d.bodyTargets)) setBodyTargets(d.bodyTargets);
       if(d.deletedGoals) setDeletedGoals(d.deletedGoals);
       if(d.deletedTargets) setDeletedTargets(d.deletedTargets);
       if(d.collapsed) setCollapsed(d.collapsed);
