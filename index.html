@@ -1892,7 +1892,7 @@ function momentumWord(s){ return s>=90?"On fire":s>=75?"Strong":s>=55?"Building"
 function projectTarget(t){
   const h=t.history||[]; if(h.length<2) return null;
   const first=h[0], last=h[h.length-1];
-  const days=(keyToDate(last.date)-keyToDate(first.date))/86400000;
+  const days=Math.round((keyToDate(last.date)-keyToDate(first.date))/86400000);
   if(days<=0) return null;
   const rate=(Number(last.value)-Number(first.value))/days;
   if(rate===0) return null;
