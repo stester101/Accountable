@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Accountable</title>
-<meta name="theme-color" content="#1B2A4A"/>
+<meta name="theme-color" content="#357545"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
@@ -15,18 +15,43 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <style>
-  html,body{margin:0;padding:0;background:#FAF6EE;-webkit-tap-highlight-color:transparent;touch-action:manipulation;overscroll-behavior:none;}
+:root{
+--bg:#FAFAF7;--surface:#FFFFFF;--surface-sunken:#F2F3EE;--line:#E4E6DF;--line-strong:#8E9388;
+--text:#22261F;--text-muted:#6D7268;--heading:#22512F;
+--primary:#357545;--primary-hover:#22512F;--on-primary:#FFFFFF;--primary-soft:#EEF6F0;--on-primary-soft:#357545;--link:#357545;
+--secondary-soft:#F6EBCB;--on-secondary-soft:#7A5E17;--tertiary-soft:#FBEEEE;--on-tertiary-soft:#7E3B3B;
+--success:#357545;--warning:#7A5E17;--error:#B4463F;--info:#3F6E91;--error-soft:#FBEDEC;--info-soft:#EAF1F7;--focus:#4C9A5E;
+--leaf-200:#BEDDC4;--leaf-400:#7DBA8A;--leaf-600:#4C9A5E;--mustard-400:#E3BE5C;--rose-400:#D98A8A;--rose-600:#B5605F;
+--shadow-sm:0 1px 2px rgba(34,81,47,.08);--shadow-md:0 1px 2px rgba(34,81,47,.06),0 6px 16px rgba(34,81,47,.08);--shadow-lg:0 2px 4px rgba(34,81,47,.06),0 16px 40px rgba(34,81,47,.14);
+--font-hero:Figtree,system-ui,sans-serif;--font-display:Lexend,system-ui,sans-serif;--font-body:Manrope,system-ui,sans-serif;--font-mono:"DM Mono",ui-monospace,monospace;--font-hand:Caveat,"Segoe Print",cursive;--font-editorial:Fraunces,Georgia,serif;
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;
+--radius-sm:6px;--radius-md:10px;--radius-lg:12px;--radius-xl:16px;--radius-full:999px;--radius-leaf:22px;--radius-leaf-tip:4px;
+--ease-smooth:cubic-bezier(.65,0,.35,1);--ease-out:cubic-bezier(.2,.8,.2,1);--ease-spring:cubic-bezier(.3,1.3,.5,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+--bg:#141914;--surface:#1C221C;--surface-sunken:#111511;--line:#2D352D;--line-strong:#6B7569;--text:#E6EBE3;--text-muted:#A3AB9F;--heading:#BEDDC4;
+--primary:#7DBA8A;--primary-hover:#9DCBA7;--on-primary:#132A19;--primary-soft:#24382A;--on-primary-soft:#BEDDC4;--link:#9DCBA7;
+--secondary-soft:#3A3115;--on-secondary-soft:#EFD99A;--tertiary-soft:#3D2626;--on-tertiary-soft:#EBB9B9;
+--success:#7DBA8A;--warning:#E3BE5C;--error:#E58A83;--info:#8FB3CF;--error-soft:#3A2220;--info-soft:#1D2A35;--focus:#9DCBA7;
+--shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow-md:0 1px 2px rgba(0,0,0,.3),0 6px 16px rgba(0,0,0,.35);--shadow-lg:0 2px 4px rgba(0,0,0,.35),0 16px 40px rgba(0,0,0,.5);}}
+:root[data-theme=dark]{
+--bg:#141914;--surface:#1C221C;--surface-sunken:#111511;--line:#2D352D;--line-strong:#6B7569;--text:#E6EBE3;--text-muted:#A3AB9F;--heading:#BEDDC4;
+--primary:#7DBA8A;--primary-hover:#9DCBA7;--on-primary:#132A19;--primary-soft:#24382A;--on-primary-soft:#BEDDC4;--link:#9DCBA7;
+--secondary-soft:#3A3115;--on-secondary-soft:#EFD99A;--tertiary-soft:#3D2626;--on-tertiary-soft:#EBB9B9;
+--success:#7DBA8A;--warning:#E3BE5C;--error:#E58A83;--info:#8FB3CF;--error-soft:#3A2220;--info-soft:#1D2A35;--focus:#9DCBA7;
+--shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow-md:0 1px 2px rgba(0,0,0,.3),0 6px 16px rgba(0,0,0,.35);--shadow-lg:0 2px 4px rgba(0,0,0,.35),0 16px 40px rgba(0,0,0,.5);}
+  html,body{margin:0;padding:0;background:var(--bg);-webkit-tap-highlight-color:transparent;touch-action:manipulation;overscroll-behavior:none;}
   *{touch-action:manipulation;}
   #root{min-height:100vh;}
   #loading{position:fixed;inset:0;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;
-    font-family:Georgia,serif;color:#1B2A4A;font-size:20px;background:#FAF6EE;z-index:9999;padding:24px;text-align:center;}
+    font-family:Lexend,system-ui,sans-serif;color:var(--text);font-size:20px;background:var(--bg);z-index:9999;padding:24px;text-align:center;}
   #status{font-size:12px;color:#A8978A;font-family:ui-monospace,Menlo,monospace;}
   #err{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#C15B3C;white-space:pre-wrap;max-width:90%;
-    background:#FFF;border:1px solid #EADFCB;border-radius:10px;padding:12px;display:none;text-align:left;overflow:auto;max-height:60vh;}
+    background:#FFF;border:1px solid var(--line);border-radius:10px;padding:12px;display:none;text-align:left;overflow:auto;max-height:60vh;}
 </style>
 </head>
 <body>
-<div id="root"><div id="loading"><div>Loading Accountable…</div><div id="status"></div><div id="err"></div></div></div>
+<div id="root"><div id="loading"><div>loading accountable…</div><div id="status"></div><div id="err"></div></div></div>
 
 <script type="text/plain" id="jsx-src">
 const {useState,useMemo,useRef,useEffect}=React;
@@ -102,12 +127,12 @@ const BarChart3 = IWrap(<><path d="M3 3v18h18"/><rect x="7" y="10" width="3" hei
 
 
 /* ── design tokens ──
-   ink #1B2A4A · paper #FAF6EE · rust #C15B3C · sage #6B8F71 · amber #E8A33D */
+   ink var(--text) · paper var(--bg) · rust var(--error) · sage var(--primary) · amber var(--mustard-400) */
 
 const MOODS = ["😞","😐","🙂","😊","🤩"];
 const MOOD_WORDS = ["","Rough","Meh","OK","Good","Great"];
 const CATS = ["Diet","Fitness","Health","Sleep","General"];
-const ACCENTS = ["#C15B3C","#6B8F71","#E8A33D","#4F7CAC","#9B6A9E","#1B2A4A"];
+const ACCENTS = ["var(--error)","var(--primary)","var(--mustard-400)","var(--info)","var(--rose-600)","var(--text)"];
 const FEEDBACK_EMAIL = ""; // optional: put your email here to receive feedback via the Email button
 
 /* ── date utils (LOCAL time) ── */
@@ -159,12 +184,12 @@ const defaultBuffer = (type) => type==="max" ? 25 : 30;
 
 /* ── macro sub-goals under Food (seeded once) ── */
 const MACRO_DEFS = [
-  ["protein","Protein","g","min","Dumbbell",150,5,"#6B8F71"],
-  ["carbs","Carbs (excl. sugars)","g","max","Flame",100,5,"#C15B3C"],
-  ["sugars","Added sugars","g","max","Star",20,1,"#9B6A9E"],
-  ["sugars-nat","Natural sugars","g","max","Heart",30,1,"#C9A227"],
-  ["fat","Fat","g","max","Droplets",60,1,"#E8A33D"],
-  ["fibre","Fibre","g","min","Leaf",30,1,"#4F7CAC"],
+  ["protein","Protein","g","min","Dumbbell",150,5,"var(--primary)"],
+  ["carbs","Carbs (excl. sugars)","g","max","Flame",100,5,"var(--error)"],
+  ["sugars","Added sugars","g","max","Star",20,1,"var(--rose-600)"],
+  ["sugars-nat","Natural sugars","g","max","Heart",30,1,"var(--mustard-400)"],
+  ["fat","Fat","g","max","Droplets",60,1,"var(--mustard-400)"],
+  ["fibre","Fibre","g","min","Leaf",30,1,"var(--info)"],
 ];
 function macroGoals(startKey){
   return MACRO_DEFS.map(([id,label,unit,type,icon,target,step,accent])=>
@@ -246,7 +271,7 @@ const statusFor = (goal,value,target) => {
   if (goal.type==="max") { if(v<=target) return "full"; if(v<=target*(1+buf)) return "partial"; return "missed"; }
   if (v>=target) return "full"; if (v>=target*(1-buf)) return "partial"; return "missed";
 };
-const SC = {full:"#6B8F71",partial:"#E8A33D",missed:"#C15B3C",empty:"#D8CFBC"};
+const SC = {full:"#357545",partial:"#E3BE5C",missed:"#B4463F",empty:"#E4E6DF"};
 
 const weeklyDone = (goal,dailyLogs,key) => weekDays(key).filter(d=>{
   const v=dailyLogs[d]?.values[goal.id];
@@ -371,7 +396,7 @@ function reorderCategory(goals, category, newIds){
 }
 function confettiBurst(){
   try{
-    const N=26, colors=["#C15B3C","#6B8F71","#E8A33D","#4F7CAC","#1B2A4A"];
+    const N=26, colors=["var(--error)","var(--primary)","var(--mustard-400)","var(--info)","var(--text)"];
     for(let i=0;i<N;i++){
       const el=document.createElement("div");
       el.style.cssText=`position:fixed;top:38%;left:50%;width:9px;height:14px;z-index:9999;pointer-events:none;border-radius:2px;background:${colors[i%colors.length]};opacity:1;`;
@@ -426,53 +451,53 @@ const cvNum = (v) => {
 
 const CVS = {
   wrap:{position:"fixed",inset:0,display:"flex",flexDirection:"column",padding:"7px 8px 8px",
-        fontFamily:"'Inter',sans-serif",color:"#1B2A4A",overflow:"hidden"},
+        fontFamily:"'Manrope',sans-serif",color:"var(--text)",overflow:"hidden"},
   head:{display:"flex",alignItems:"center",gap:8,padding:"0 2px 6px",flexShrink:0},
-  date:{fontFamily:"'Source Serif 4',Georgia,serif",fontSize:15,fontWeight:600,letterSpacing:-0.2},
+  date:{fontFamily:"'Lexend',Georgia,serif",fontSize:15,fontWeight:600,letterSpacing:-0.2},
   headRight:{marginLeft:"auto",display:"flex",alignItems:"center",gap:9},
-  chip:{display:"flex",alignItems:"center",gap:3,fontSize:12,fontWeight:700,
-        fontFamily:"'JetBrains Mono',monospace"},
+  chip:{display:"flex",alignItems:"center",gap:3,fontSize:12,fontWeight:600,
+        fontFamily:"'DM Mono',monospace"},
   grid:{flex:1,display:"grid",gridTemplateColumns:"1fr 1fr",gap:7,alignContent:"start",
         overflowY:"auto",WebkitOverflowScrolling:"touch",paddingBottom:2},
-  tile:{position:"relative",height:58,border:"1px solid #EADFCB",borderRadius:13,background:"#FFF",
+  tile:{position:"relative",height:58,border:"1px solid var(--line)",borderRadius:13,background:"#FFF",
         padding:"7px 9px 0",display:"flex",flexDirection:"column",gap:1,textAlign:"left",
-        overflow:"hidden",boxShadow:"0 1px 2px rgba(27,42,74,0.05)",WebkitTapHighlightColor:"transparent"},
+        overflow:"hidden",boxShadow:"0 1px 2px rgba(34,81,47,0.05)",WebkitTapHighlightColor:"transparent"},
   tileTop:{display:"flex",alignItems:"center",gap:4,minWidth:0},
-  tileLabel:{fontSize:10.5,fontWeight:600,color:"#6B6354",whiteSpace:"nowrap",
+  tileLabel:{fontSize:10.5,fontWeight:600,color:"var(--text-muted)",whiteSpace:"nowrap",
              overflow:"hidden",textOverflow:"ellipsis"},
-  tileVal:{fontFamily:"'JetBrains Mono',monospace",fontSize:20,fontWeight:700,lineHeight:1.05,
+  tileVal:{fontFamily:"'DM Mono',monospace",fontSize:20,fontWeight:600,lineHeight:1.05,
            fontVariantNumeric:"tabular-nums"},
-  tileTgt:{fontSize:9.5,color:"#A8978A",fontWeight:500,marginLeft:3},
-  track:{position:"absolute",left:0,right:0,bottom:0,height:3,background:"#F1EADA"},
+  tileTgt:{fontSize:9.5,color:"var(--text-muted)",fontWeight:500,marginLeft:3},
+  track:{position:"absolute",left:0,right:0,bottom:0,height:3,background:"var(--surface-sunken)"},
   foot:{display:"flex",alignItems:"center",gap:4,paddingTop:7,flexShrink:0},
   mood:{width:38,height:34,border:"none",background:"transparent",borderRadius:10,fontSize:18,
         lineHeight:1,padding:0,display:"flex",alignItems:"center",justifyContent:"center"},
-  finish:{marginLeft:"auto",height:34,padding:"0 12px",borderRadius:10,border:"1px solid #1B2A4A",
-          background:"#1B2A4A",color:"#FAF6EE",fontSize:12,fontWeight:600,display:"flex",
+  finish:{marginLeft:"auto",height:34,padding:"0 12px",borderRadius:10,border:"1px solid var(--text)",
+          background:"var(--primary)",color:"var(--on-primary)",fontSize:12,fontWeight:600,display:"flex",
           alignItems:"center",gap:5,whiteSpace:"nowrap"},
-  toast:{position:"fixed",left:10,right:10,bottom:52,background:"#1B2A4A",color:"#FAF6EE",
+  toast:{position:"fixed",left:10,right:10,bottom:52,background:"var(--primary)",color:"var(--on-primary)",
          borderRadius:12,padding:"8px 10px",display:"flex",alignItems:"center",gap:8,fontSize:12,
          boxShadow:"0 8px 24px -10px rgba(0,0,0,0.6)",animation:"fade-in .15s ease"},
   undo:{marginLeft:"auto",background:"transparent",border:"1px solid rgba(250,246,238,0.45)",
-        color:"#FAF6EE",borderRadius:8,padding:"4px 10px",fontSize:11.5,fontWeight:700},
-  pad:{position:"fixed",inset:0,background:"#FAF6EE",display:"flex",flexDirection:"column",
+        color:"var(--on-primary)",borderRadius:8,padding:"4px 10px",fontSize:11.5,fontWeight:600},
+  pad:{position:"fixed",inset:0,background:"var(--bg)",display:"flex",flexDirection:"column",
        padding:"9px 10px 10px",zIndex:50,animation:"sheet-up .16s ease"},
   padHead:{display:"flex",alignItems:"baseline",gap:6,paddingBottom:6},
-  padVal:{display:"flex",alignItems:"center",gap:8,border:"1px solid #EADFCB",background:"#FFF",
+  padVal:{display:"flex",alignItems:"center",gap:8,border:"1px solid var(--line)",background:"#FFF",
           borderRadius:12,padding:"7px 10px",marginBottom:8},
-  padNum:{flex:1,fontFamily:"'JetBrains Mono',monospace",fontSize:26,fontWeight:700,
+  padNum:{flex:1,fontFamily:"'DM Mono',monospace",fontSize:26,fontWeight:600,
           textAlign:"center",fontVariantNumeric:"tabular-nums",minWidth:0,
           overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"},
-  step:{width:38,height:38,borderRadius:10,border:"1px solid #EADFCB",background:"#FAF6EE",
+  step:{width:38,height:38,borderRadius:10,border:"1px solid var(--line)",background:"var(--bg)",
         display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
   keys:{flex:1,display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6},
-  key:{border:"1px solid #EADFCB",background:"#FFF",borderRadius:11,fontSize:20,fontWeight:600,
-       fontFamily:"'JetBrains Mono',monospace",display:"flex",alignItems:"center",justifyContent:"center"},
+  key:{border:"1px solid var(--line)",background:"#FFF",borderRadius:11,fontSize:20,fontWeight:600,
+       fontFamily:"'DM Mono',monospace",display:"flex",alignItems:"center",justifyContent:"center"},
   padFoot:{display:"flex",gap:6,paddingTop:7},
-  padBtn:{flex:1,height:40,borderRadius:11,border:"1px solid #EADFCB",background:"#FFF",
-          fontSize:13,fontWeight:600,color:"#1B2A4A"},
-  padSave:{flex:1.4,height:40,borderRadius:11,border:"1px solid #1B2A4A",background:"#1B2A4A",
-           color:"#FAF6EE",fontSize:13,fontWeight:700},
+  padBtn:{flex:1,height:40,borderRadius:11,border:"1px solid var(--line)",background:"#FFF",
+          fontSize:13,fontWeight:600,color:"var(--text)"},
+  padSave:{flex:1.4,height:40,borderRadius:11,border:"1px solid var(--text)",background:"var(--primary)",
+           color:"var(--on-primary)",fontSize:13,fontWeight:600},
 };
 
 function CoverTile({g,value,target,masked,onBump,onOpen}){
@@ -484,23 +509,23 @@ function CoverTile({g,value,target,masked,onBump,onOpen}){
   const end = () => { clearTimeout(timer.current); if(!held.current) onBump(); };
   const kill = () => { clearTimeout(timer.current); held.current=true; };
   return (
-    <button style={{...CVS.tile,borderColor:status==="empty"?"#EADFCB":SC[status]}}
+    <button style={{...CVS.tile,borderColor:status==="empty"?"var(--line)":SC[status]}}
       onPointerDown={start} onPointerUp={end} onPointerLeave={kill} onPointerCancel={kill}
       onContextMenu={e=>e.preventDefault()}>
       <div style={CVS.tileTop}>
-        <Icon size={12} color="#1B2A4A" style={{opacity:0.65,flexShrink:0}}/>
+        <Icon size={12} color="var(--text)" style={{opacity:0.65,flexShrink:0}}/>
         <span style={CVS.tileLabel}>{g.label}</span>
-        {g.private && <Lock size={9} color="#A8978A" style={{flexShrink:0}}/>}
+        {g.private && <Lock size={9} color="var(--text-muted)" style={{flexShrink:0}}/>}
       </div>
       <div style={{display:"flex",alignItems:"baseline",minWidth:0}}>
-        <span style={{...CVS.tileVal,color:status==="empty"?"#A8978A":SC[status]}}>
+        <span style={{...CVS.tileVal,color:status==="empty"?"var(--text-muted)":SC[status]}}>
           {masked ? "••" : cvNum(value)}
         </span>
         {!masked && <span style={CVS.tileTgt}>/{cvNum(target)} {g.unit}</span>}
       </div>
       <div style={CVS.track}>
         <div style={{height:"100%",width:`${Math.round(frac*100)}%`,
-          background:status==="empty"?"#D8CFBC":SC[status],transition:"width .2s ease"}}/>
+          background:status==="empty"?"var(--line)":SC[status],transition:"width .2s ease"}}/>
       </div>
     </button>
   );
@@ -519,23 +544,23 @@ function CoverPad({g,target,value,onSave,onClose}){
   return (
     <div style={CVS.pad}>
       <div style={CVS.padHead}>
-        <span style={{fontFamily:"'Source Serif 4',Georgia,serif",fontSize:16,fontWeight:600}}>{g.label}</span>
-        <span style={{fontSize:10.5,color:"#A8978A"}}>
+        <span style={{fontFamily:"'Lexend',Georgia,serif",fontSize:16,fontWeight:600}}>{g.label}</span>
+        <span style={{fontSize:10.5,color:"var(--text-muted)"}}>
           {g.type==="max"?"max":"at least"} {cvNum(target)} {g.unit}
         </span>
       </div>
       <div style={CVS.padVal}>
-        <button style={CVS.step} onClick={()=>nudge(-1)}><Minus size={15} color="#1B2A4A"/></button>
+        <button style={CVS.step} onClick={()=>nudge(-1)}><Minus size={15} color="var(--text)"/></button>
         <span style={CVS.padNum}>{buf===""?<span style={{color:"#C9BDA8"}}>0</span>:buf}</span>
-        <button style={CVS.step} onClick={()=>nudge(1)}><Plus size={15} color="#1B2A4A"/></button>
+        <button style={CVS.step} onClick={()=>nudge(1)}><Plus size={15} color="var(--text)"/></button>
       </div>
       <div style={CVS.keys}>
         {["1","2","3","4","5","6","7","8","9",".","0","⌫"].map(k=>
           <button key={k} style={CVS.key} onClick={()=>press(k)}>{k}</button>)}
       </div>
       <div style={CVS.padFoot}>
-        <button style={CVS.padBtn} onClick={onClose}>Cancel</button>
-        <button style={CVS.padSave} onClick={()=>onSave(buf==="" ? "" : Number(buf))}>Save</button>
+        <button style={CVS.padBtn} onClick={onClose}>cancel</button>
+        <button style={CVS.padSave} onClick={()=>onSave(buf==="" ? "" : Number(buf))}>save</button>
       </div>
     </div>
   );
@@ -582,18 +607,18 @@ function CoverView({goals,dayLog,today,streak,locked,privacyOn,onSet,onMood,mood
       <div style={CVS.head}>
         <span style={CVS.date}>{keyToDate(today).toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}</span>
         <div style={CVS.headRight}>
-          {streak>0 && <span style={CVS.chip}><Flame size={13} color="#C15B3C"/>{streak}</span>}
-          <span style={{...CVS.chip,color:hit===shown.length&&shown.length?"#6B8F71":"#A8978A"}}>
+          {streak>0 && <span style={CVS.chip}><Flame size={13} color="var(--error)"/>{streak}</span>}
+          <span style={{...CVS.chip,color:hit===shown.length&&shown.length?"var(--primary)":"var(--text-muted)"}}>
             {hit}/{shown.length}
           </span>
           <button onClick={onFull} style={{border:"none",background:"transparent",padding:2,lineHeight:0}}
-            aria-label="Open the full app"><ChevronRight size={15} color="#A8978A"/></button>
+            aria-label="open the full app"><ChevronRight size={15} color="var(--text-muted)"/></button>
         </div>
       </div>
 
       {shown.length===0 ? (
         <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",
-          textAlign:"center",fontSize:12,color:"#A8978A",padding:"0 20px"}}>
+          textAlign:"center",fontSize:12,color:"var(--text-muted)",padding:"0 20px"}}>
           Nothing scheduled today. Open the full app to add a goal.
         </div>
       ) : (
@@ -612,15 +637,15 @@ function CoverView({goals,dayLog,today,streak,locked,privacyOn,onSet,onMood,mood
       <div style={CVS.foot}>
         {MOODS.map((m,i)=>
           <button key={i} style={{...CVS.mood,
-            background: mood===i+1 ? "#1B2A4A" : "transparent",
+            background: mood===i+1 ? "var(--primary)" : "transparent",
             opacity: mood && mood!==i+1 ? 0.4 : 1}}
             onClick={()=>{ buzz(12); onMood(i+1); }}>{m}</button>
         )}
         {locked
-          ? <span style={{...CVS.finish,background:"#F1EADA",color:"#6B6354",borderColor:"#EADFCB"}}>
-              <Lock size={12} color="#6B6354"/> Done
+          ? <span style={{...CVS.finish,background:"var(--surface-sunken)",color:"var(--text-muted)",borderColor:"var(--line)"}}>
+              <Lock size={12} color="var(--text-muted)"/> Done
             </span>
-          : <button style={{...CVS.finish,...(armed?{background:"#6B8F71",borderColor:"#6B8F71"}:{})}}
+          : <button style={{...CVS.finish,...(armed?{background:"var(--primary)",borderColor:"var(--primary)"}:{})}}
               onClick={finish}>{armed ? "Sure?" : "Finish"}</button>}
       </div>
 
@@ -630,7 +655,7 @@ function CoverView({goals,dayLog,today,streak,locked,privacyOn,onSet,onMood,mood
           <button style={CVS.undo} onClick={()=>{
             onSet(toast.goalId, toast.prev===undefined?"":toast.prev);
             setToast(null); buzz(10);
-          }}>Undo</button>
+          }}>undo</button>
         </div>}
 
       {pad &&
@@ -660,6 +685,7 @@ function Accountable() {
   const [collapsed,setCollapsed] = useState(()=>persisted?.collapsed ?? {});
   const [selectedDate,setSelectedDate] = useState(todayKey());
   const [darkMode,setDarkMode] = useState(()=>persisted?.darkMode ?? false);
+  useEffect(()=>{document.documentElement.dataset.theme=darkMode?"dark":"light";const m=document.querySelector('meta[name=theme-color]');if(m)m.content=darkMode?"#141914":"#357545";},[darkMode]);
   const [compact,setCompact] = useState(()=>persisted?.compact ?? false);
   const [lastSaved,setLastSaved] = useState(null);
   const [exp,setExp] = useState(()=>persisted?.exp ?? {momentum:false,focus:false,moodTint:false,projection:false,evening:false,consistency:false,wrapped:false});
@@ -850,15 +876,15 @@ function Accountable() {
       {tab==="targets"&&<TargetsTab bodyTargets={bodyTargets} onCheckin={t=>setCheckinTarget(t)} onUpdate={()=>setShowUpdateTargets(true)} onAdd={()=>setShowAddTarget(true)} onExport={exportCSV}/>}
 
       <nav style={S.navBar}>
-        <NavBtn icon={Home} label="Today" active={tab==="today"} onClick={()=>setTab("today")}/>
-        <NavBtn icon={Target} label="Goals" active={tab==="goals"} onClick={()=>setTab("goals")}/>
-        <NavBtn icon={Scale} label="Targets" active={tab==="targets"} onClick={()=>setTab("targets")}/>
-        <NavBtn icon={BarChart3} label="Data" active={tab==="data"} onClick={()=>setTab("data")}/>
+        <NavBtn icon={Home} label="today" active={tab==="today"} onClick={()=>setTab("today")}/>
+        <NavBtn icon={Target} label="goals" active={tab==="goals"} onClick={()=>setTab("goals")}/>
+        <NavBtn icon={Scale} label="targets" active={tab==="targets"} onClick={()=>setTab("targets")}/>
+        <NavBtn icon={BarChart3} label="data" active={tab==="data"} onClick={()=>setTab("data")}/>
       </nav>
 
-      {showAddGoal&&<GoalFormModal title="New goal" categoriesCfg={categoriesCfg} parentOpts={parentOptions()} onClose={()=>setShowAddGoal(false)} onSave={addGoal}/>}
-      {editGoal&&<GoalFormModal title="Edit goal" goal={editGoal} categoriesCfg={categoriesCfg} parentOpts={parentOptions(editGoal)} currentTarget={targetForDate(editGoal,selectedDate)} onClose={()=>setEditGoal(null)} onSave={patch=>{saveGoalEdit(editGoal.id,patch);setEditGoal(null);}} onDelete={g=>{setEditGoal(null);setDeleteGoal(g);}}/>}
-      {deleteGoal&&<Modal onClose={()=>setDeleteGoal(null)}><h2 style={S.modalTitle}>Delete "{deleteGoal.label}"?</h2><p style={S.modalSub}>Removes it from your list. Restore any time from Settings → Recently deleted.</p><button style={{...S.primaryBtn,background:"#C15B3C"}} onClick={()=>confirmDeleteGoal(deleteGoal)}><Trash2 size={16}/> Yes, delete it</button><button style={S.dashedBtn} onClick={()=>setDeleteGoal(null)}>Cancel</button></Modal>}
+      {showAddGoal&&<GoalFormModal title="new goal" categoriesCfg={categoriesCfg} parentOpts={parentOptions()} onClose={()=>setShowAddGoal(false)} onSave={addGoal}/>}
+      {editGoal&&<GoalFormModal title="edit goal" goal={editGoal} categoriesCfg={categoriesCfg} parentOpts={parentOptions(editGoal)} currentTarget={targetForDate(editGoal,selectedDate)} onClose={()=>setEditGoal(null)} onSave={patch=>{saveGoalEdit(editGoal.id,patch);setEditGoal(null);}} onDelete={g=>{setEditGoal(null);setDeleteGoal(g);}}/>}
+      {deleteGoal&&<Modal onClose={()=>setDeleteGoal(null)}><h2 style={S.modalTitle}>Delete "{deleteGoal.label}"?</h2><p style={S.modalSub}>removes it from your list. restore any time from settings → recently deleted.</p><button style={{...S.primaryBtn,background:"var(--error)"}} onClick={()=>confirmDeleteGoal(deleteGoal)}><Trash2 size={16}/> Yes, delete it</button><button style={S.dashedBtn} onClick={()=>setDeleteGoal(null)}>cancel</button></Modal>}
       {historyGoal&&<GoalHistoryModal goal={historyGoal} dailyLogs={dailyLogs} today={TODAY} personalBests={personalBests} privacyOn={privacyOn} onEdit={g=>{setHistoryGoal(null);setEditGoal(g);}} onClose={()=>setHistoryGoal(null)}/>}
       {showCalendar&&<CalendarModal selectedDate={selectedDate} today={TODAY} dailyLogs={dailyLogs} onSelect={d=>{setSelectedDate(d);setShowCalendar(false);}} onClose={()=>setShowCalendar(false)}/>}
       {finalizeFor&&<FinalizeModal date={finalizeFor} currentMood={moods[finalizeFor]??null} onClose={()=>setFinalizeFor(null)} onConfirm={doFinalize}/>}
@@ -941,15 +967,15 @@ function ReorderList({ids,onReorder,renderItem}){
 function WeeklyRing({done,total,accent}){
   const r=15, c=2*Math.PI*r, pct=total?Math.min(done/total,1):0;
   return <svg width="40" height="40" viewBox="0 0 40 40" style={{flexShrink:0}}>
-    <circle cx="20" cy="20" r={r} fill="none" stroke="#EADFCB" strokeWidth="4"/>
-    <circle cx="20" cy="20" r={r} fill="none" stroke={accent||"#6B8F71"} strokeWidth="4" strokeLinecap="round"
+    <circle cx="20" cy="20" r={r} fill="none" stroke="var(--line)" strokeWidth="4"/>
+    <circle cx="20" cy="20" r={r} fill="none" stroke={accent||"var(--primary)"} strokeWidth="4" strokeLinecap="round"
       strokeDasharray={c} strokeDashoffset={c*(1-pct)} transform="rotate(-90 20 20)"/>
-    <text x="20" y="24" textAnchor="middle" fontSize="12" fontWeight="700" fill="#1B2A4A" fontFamily="'JetBrains Mono',monospace">{done}</text>
+    <text x="20" y="24" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--primary)" fontFamily="'DM Mono',monospace">{done}</text>
   </svg>;
 }
 
 function StatusDot({status}) {
-  if (status==="empty") return <div style={{...S.statusDot,border:"1.5px solid #D8CFBC",background:"transparent"}}/>;
+  if (status==="empty") return <div style={{...S.statusDot,border:"1.5px solid var(--line)",background:"transparent"}}/>;
   if (status==="partial") return <div style={{...S.statusDot,background:SC.partial}}><AlertTriangle size={9} color="#FFF"/></div>;
   if (status==="missed") return <div style={{...S.statusDot,background:SC.missed}}><X size={10} color="#FFF"/></div>;
   return <div style={{...S.statusDot,background:SC.full}}><Check size={10} color="#FFF"/></div>;
@@ -958,14 +984,14 @@ function StatusDot({status}) {
 function DateNav({selectedDate,setSelectedDate,isToday,onOpenCalendar,onToday}) {
   return (
     <div style={S.dateNav}>
-      <button style={S.dateArrow} onClick={()=>setSelectedDate(addDays(selectedDate,-1))} aria-label="Previous day"><ChevronLeft size={18} color="#1B2A4A"/></button>
+      <button style={S.dateArrow} onClick={()=>setSelectedDate(addDays(selectedDate,-1))} aria-label="previous day"><ChevronLeft size={18} color="var(--text)"/></button>
       <button style={S.dateLabelWrap} onClick={onOpenCalendar}>
         <span style={S.dateLabel}>{fmtPretty(selectedDate)}</span>
         {!isToday&&<span style={S.dateBackTag}>back-logging</span>}
       </button>
       <div style={{display:"flex",alignItems:"center",gap:6}}>
-        {!isToday && <button style={S.todayChip} onClick={onToday}>Today</button>}
-        <button style={{...S.dateArrow,opacity:isToday?0.3:1}} disabled={isToday} onClick={()=>setSelectedDate(addDays(selectedDate,1))} aria-label="Next day"><ChevronRight size={18} color="#1B2A4A"/></button>
+        {!isToday && <button style={S.todayChip} onClick={onToday}>today</button>}
+        <button style={{...S.dateArrow,opacity:isToday?0.3:1}} disabled={isToday} onClick={()=>setSelectedDate(addDays(selectedDate,1))} aria-label="next day"><ChevronRight size={18} color="var(--text)"/></button>
       </div>
     </div>
   );
@@ -1008,8 +1034,8 @@ function TodayView(p) {
         {renderOne(g,false)}
         <div style={S.subBlock}>
           <button style={S.subHeader} onClick={()=>toggleCollapse(ck)}>
-            <ChevronDown size={13} color="#A8978A" style={{transform:open?"none":"rotate(-90deg)",transition:"transform .15s"}}/>
-            <span style={S.subTitle}>Breakdown</span>
+            <ChevronDown size={13} color="var(--text-muted)" style={{transform:open?"none":"rotate(-90deg)",transition:"transform .15s"}}/>
+            <span style={S.subTitle}>breakdown</span>
             <span style={S.catCount}>{donek}/{kids.length}</span>
           </button>
           {open && <div style={{display:"flex",flexDirection:"column",gap:8}}>{kids.map(k=>renderOne(k,true))}</div>}
@@ -1022,12 +1048,12 @@ function TodayView(p) {
     <div style={S.scroll}>
       <header style={S.header}>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
-          <h1 style={S.h1}>Accountable</h1>
-          <div style={S.streakBadgeSm} title="Check-in streak"><Flame size={15} color="#C15B3C"/><span style={S.streakNumSm}>{streak}</span></div>
+          <h1 style={S.h1}>accountable</h1>
+          <div style={S.streakBadgeSm} title="check-in streak"><Flame size={15} color="var(--error)"/><span style={S.streakNumSm}>{streak}</span></div>
         </div>
         <div style={{display:"flex",gap:6}}>
-          {<Ibutton onClick={()=>setPrivacyOn(v=>!v)} title={privacyOn?"Private goals hidden":"Private goals visible"}>{privacyOn?<EyeOff size={16} color="#4F7CAC"/>:<Eye size={16} color="#1B2A4A"/>}</Ibutton>}
-          <Ibutton onClick={onOpenSettings} title="Settings"><Settings size={16} color="#1B2A4A"/></Ibutton>
+          {<Ibutton onClick={()=>setPrivacyOn(v=>!v)} title={privacyOn?"Private goals hidden":"Private goals visible"}>{privacyOn?<EyeOff size={16} color="var(--info)"/>:<Eye size={16} color="var(--text)"/>}</Ibutton>}
+          <Ibutton onClick={onOpenSettings} title="settings"><Settings size={16} color="var(--text)"/></Ibutton>
         </div>
       </header>
 
@@ -1035,20 +1061,20 @@ function TodayView(p) {
 
       
 
-      {locked && <div style={S.lockBanner}><Lock size={13} color="#6B6354"/> Day finalised{mood?` \u00b7 ${MOODS[mood-1]} ${MOOD_WORDS[mood]}`:""} — entries locked. <button style={S.reopenLink} onClick={onReopen}>Reopen</button></div>}
+      {locked && <div style={S.lockBanner}><Lock size={13} color="var(--text-muted)"/> Day finalised{mood?` \u00b7 ${MOODS[mood-1]} ${MOOD_WORDS[mood]}`:""} — entries locked. <button style={S.reopenLink} onClick={onReopen}>reopen</button></div>}
 
       {goals.length>0 && (
         <div style={S.pillsRow}>
           <div style={{display:"flex",gap:5,flex:1,flexWrap:"wrap"}}>
-            {visible.map(g=>{const st=statusFor(g,dayLog.values[g.id],targetForDate(g,selectedDate));return <div key={g.id} style={{...S.chainLink,flex:"0 0 auto",width:16,background:st==="empty"?"transparent":SC[st],borderColor:st==="empty"?"#D8CFBC":SC[st]}}/>;})}
+            {visible.map(g=>{const st=statusFor(g,dayLog.values[g.id],targetForDate(g,selectedDate));return <div key={g.id} style={{...S.chainLink,flex:"0 0 auto",width:16,background:st==="empty"?"transparent":SC[st],borderColor:st==="empty"?"var(--line)":SC[st]}}/>;})}
           </div>
-          <button style={{...S.ctrlIcon,...(reorderMode?S.ctrlBtnOn:{})}} onClick={()=>setReorderMode(v=>!v)} title="Reorder"><ArrowUpDownIcon on={reorderMode} color={reorderMode?"#FAF6EE":"#1B2A4A"}/></button>
-          <button style={{...S.ctrlIcon,...(compact?S.ctrlBtnOn:{})}} onClick={()=>setCompact(!compact)} title="Density"><CompactIcon compact={compact} color={compact?"#FAF6EE":"#1B2A4A"}/></button>
+          <button style={{...S.ctrlIcon,...(reorderMode?S.ctrlBtnOn:{})}} onClick={()=>setReorderMode(v=>!v)} title="reorder"><ArrowUpDownIcon on={reorderMode} color={reorderMode?"var(--bg)":"var(--text)"}/></button>
+          <button style={{...S.ctrlIcon,...(compact?S.ctrlBtnOn:{})}} onClick={()=>setCompact(!compact)} title="density"><CompactIcon compact={compact} color={compact?"var(--bg)":"var(--text)"}/></button>
         </div>
       )}
 
       {goals.length===0 && (
-        <div style={S.emptyCard}><Sparkles size={26} color="#C15B3C"/><p style={S.emptyTitle}>A clean slate.</p><p style={S.emptyText}>Add your first goal to start logging. Small and specific works best.</p></div>
+        <div style={S.emptyCard}><Sparkles size={26} color="var(--error)"/><p style={S.emptyTitle}>A clean slate.</p><p style={S.emptyText}>add your first goal to start logging. small and specific works best.</p></div>
       )}
 
 
@@ -1057,8 +1083,8 @@ function TodayView(p) {
       {privateGoals.length>0 && (
         <div style={S.catBlock}>
           <button style={S.catHeader} onClick={()=>toggleCollapse("__private__")}>
-            <ChevronDown size={15} color="#A8978A" style={{transform:collapsed["__private__"]?"rotate(-90deg)":"none",transition:"transform .15s"}}/>
-            <Lock size={12} color="#A8978A"/><span style={S.catTitle}>Private</span><span style={S.catCount}>{privateGoals.length}</span>
+            <ChevronDown size={15} color="var(--text-muted)" style={{transform:collapsed["__private__"]?"rotate(-90deg)":"none",transition:"transform .15s"}}/>
+            <Lock size={12} color="var(--text-muted)"/><span style={S.catTitle}>private</span><span style={S.catCount}>{privateGoals.length}</span>
           </button>
           {!collapsed["__private__"] && <div style={{display:"flex",flexDirection:"column",gap:10}}>{privateGoals.map(renderRow)}</div>}
         </div>
@@ -1076,7 +1102,7 @@ function TodayView(p) {
 }
 
 function ArrowUpDownIcon({on,color}){
-  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={color||(on?"#C15B3C":"#1B2A4A")} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m7 15 3 3 3-3"/><path d="M10 6v12"/><path d="m17 9-3-3-3 3"/><path d="M14 18V6"/></svg>;
+  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={color||(on?"var(--error)":"var(--text)")} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m7 15 3 3 3-3"/><path d="M10 6v12"/><path d="m17 9-3-3-3 3"/><path d="M14 18V6"/></svg>;
 }
 
 function GoalRow({g,sub,dailyLogs,dayLog,selectedDate,locked,compact,reorderMode,moveGoal,showAccent,streak,pb,onSet,onEdit,onDelete,onOpenHistory}) {
@@ -1090,28 +1116,28 @@ function GoalRow({g,sub,dailyLogs,dayLog,selectedDate,locked,compact,reorderMode
   return (
     <div style={{...S.row,...(sub?S.rowSub:{}),borderLeftColor:SC[status]}}>
       <div style={S.rowLeft} onClick={()=>onOpenHistory(g)} role="button">
-        <Icon size={compact?15:19} color="#1B2A4A" style={{opacity:0.7,flexShrink:0}}/>
+        <Icon size={compact?15:19} color="var(--text)" style={{opacity:0.7,flexShrink:0}}/>
         <div style={{minWidth:0}}>
           <div style={S.rowLabelLine}>
             <span style={{...S.rowLabel,...(sub?{fontSize:13}:{})}}>{g.label}</span>
-            {g.private&&<Lock size={10} color="#A8978A"/>}
-            {streak>0&&<span style={{...S.micro,fontSize:12.5}} title={atBest?"Best-ever streak!":""}><Flame size={13} color="#C15B3C" fill={atBest?"#C15B3C":"none"}/>{streak}</span>}
-            {pb&&<span title="Personal best matched" style={{fontSize:11,lineHeight:1}}>🏆</span>}
-            {!compact&&!reorderMode&&<button style={S.pencilBtn} onClick={e=>{e.stopPropagation();onEdit(g);}}><Pencil size={11} color="#A8978A"/></button>}
+            {g.private&&<Lock size={10} color="var(--text-muted)"/>}
+            {streak>0&&<span style={{...S.micro,fontSize:12.5}} title={atBest?"Best-ever streak!":""}><Flame size={13} color="var(--error)" fill={atBest?"var(--error)":"none"}/>{streak}</span>}
+            {pb&&<span title="personal best matched" style={{fontSize:11,lineHeight:1}}>🏆</span>}
+            {!compact&&!reorderMode&&<button style={S.pencilBtn} onClick={e=>{e.stopPropagation();onEdit(g);}}><Pencil size={11} color="var(--text-muted)"/></button>}
           </div>
           {!compact&&<div style={S.rowTarget}>{g.type==="max"?"Max":"At least"} {target} {g.unit} · {cadenceLabel(g)}</div>}
         </div>
       </div>
       {reorderMode ? (
         <div style={S.numWrap}>
-          <button style={S.stepBtn} onClick={()=>moveGoal(g.id,-1)}><ArrowUp size={13} color="#1B2A4A"/></button>
-          <button style={S.stepBtn} onClick={()=>moveGoal(g.id,1)}><ArrowDown size={13} color="#1B2A4A"/></button>
+          <button style={S.stepBtn} onClick={()=>moveGoal(g.id,-1)}><ArrowUp size={13} color="var(--text)"/></button>
+          <button style={S.stepBtn} onClick={()=>moveGoal(g.id,1)}><ArrowDown size={13} color="var(--text)"/></button>
         </div>
       ) : (
         <div style={S.numWrap}>
-          {!compact&&<button style={S.stepBtn} disabled={locked} onClick={()=>onSet(g.id,Math.round(Math.max(0,Number(value||0)-stp)*100)/100)}><Minus size={12} color="#1B2A4A"/></button>}
-          <input inputMode="decimal" pattern="[0-9]*[.,]?[0-9]*" style={{...S.numInput,borderColor:SC[status],background:locked?"#F1EADA":"#FAF6EE"}} value={value??""} placeholder="0" disabled={locked} onFocus={e=>e.target.select()} onChange={e=>onSet(g.id,e.target.value)}/>
-          {!compact&&<button style={S.stepBtn} disabled={locked} onClick={()=>onSet(g.id,Math.round((Number(value||0)+stp)*100)/100)}><Plus size={12} color="#1B2A4A"/></button>}
+          {!compact&&<button style={S.stepBtn} disabled={locked} onClick={()=>onSet(g.id,Math.round(Math.max(0,Number(value||0)-stp)*100)/100)}><Minus size={12} color="var(--text)"/></button>}
+          <input inputMode="decimal" pattern="[0-9]*[.,]?[0-9]*" style={{...S.numInput,borderColor:SC[status],background:locked?"var(--surface-sunken)":"var(--bg)"}} value={value??""} placeholder="0" disabled={locked} onFocus={e=>e.target.select()} onChange={e=>onSet(g.id,e.target.value)}/>
+          {!compact&&<button style={S.stepBtn} disabled={locked} onClick={()=>onSet(g.id,Math.round((Number(value||0)+stp)*100)/100)}><Plus size={12} color="var(--text)"/></button>}
           <StatusDot status={status}/>
         </div>
       )}
@@ -1161,7 +1187,7 @@ function HeatmapCalendar({goals,dailyLogs,today}) {
   const days=Array.from({length:total},(_,i)=>addDays(today,-(total-1-i)));
   const daily=goals.filter(g=>!isWeekly(g)&&!isSub(g));
   const score=(d)=>{ let f=0,c=0; daily.forEach(g=>{ if(!isActiveDay(g,d)||d<gstart(g))return; const v=dailyLogs[d]?.values[g.id]; if(v===undefined||v==="")return; c++; if(statusFor(g,v,targetForDate(g,d))==="full")f++; }); return c?f/c:null; };
-  const col=(sc)=>{ if(sc===null)return"#EFE7D6"; if(sc>=0.85)return"#6B8F71"; if(sc>=0.6)return"#A8C4AC"; if(sc>=0.35)return"#E8A33D"; if(sc>0)return"#D4896B"; return"#EADFCB"; };
+  const col=(sc)=>{ if(sc===null)return"var(--surface-sunken)"; if(sc>=0.85)return"var(--primary)"; if(sc>=0.6)return"var(--primary-soft)"; if(sc>=0.35)return"var(--mustard-400)"; if(sc>0)return"var(--error)"; return"var(--line)"; };
   const weeks=Array.from({length:NW},(_,i)=>days.slice(i*7,(i+1)*7));
   const C=14,G=3,rowW=NW*(C+G);
   const monthMarks=[]; let lm=-1;
@@ -1169,7 +1195,7 @@ function HeatmapCalendar({goals,dailyLogs,today}) {
   return (
     <div style={{overflowX:"auto"}}>
       <div style={{position:"relative",height:16,minWidth:rowW,marginBottom:2}}>
-        {monthMarks.map((ml,i)=><span key={i} style={{position:"absolute",left:ml.wi*(C+G),fontSize:9,color:"#A8978A"}}>{ml.label}</span>)}
+        {monthMarks.map((ml,i)=><span key={i} style={{position:"absolute",left:ml.wi*(C+G),fontSize:9,color:"var(--text-muted)"}}>{ml.label}</span>)}
       </div>
       <div style={{display:"flex",gap:G,minWidth:rowW}}>
         {weeks.map((week,wi)=>(
@@ -1179,8 +1205,8 @@ function HeatmapCalendar({goals,dailyLogs,today}) {
         ))}
       </div>
       <div style={{display:"flex",gap:10,marginTop:8,flexWrap:"wrap"}}>
-        {[["#EADFCB","0%"],["#D4896B","<35%"],["#E8A33D","35-60%"],["#A8C4AC","60-85%"],["#6B8F71","85%+"]].map(([c,l],i)=>(
-          <div key={i} style={{display:"flex",alignItems:"center",gap:3}}><div style={{width:10,height:10,borderRadius:2,background:c}}/><span style={{fontSize:9,color:"#A8978A"}}>{l}</span></div>
+        {[["var(--line)","0%"],["var(--error)","<35%"],["var(--mustard-400)","35-60%"],["var(--primary-soft)","60-85%"],["var(--primary)","85%+"]].map(([c,l],i)=>(
+          <div key={i} style={{display:"flex",alignItems:"center",gap:3}}><div style={{width:10,height:10,borderRadius:2,background:c}}/><span style={{fontSize:9,color:"var(--text-muted)"}}>{l}</span></div>
         ))}
       </div>
     </div>
@@ -1195,19 +1221,19 @@ function GoalsTab({goals,dailyLogs,today,streak,bestStreak,moods,privacyOn,exp,o
   return (
     <div style={S.scroll}>
       <header style={S.header}>
-        <h1 style={S.h1}>Goals</h1>
-        <div style={S.streakBadge}><Flame size={18} color="#C15B3C"/><span style={S.streakNum}>{streak}</span></div>
+        <h1 style={S.h1}>goals</h1>
+        <div style={S.streakBadge}><Flame size={18} color="var(--error)"/><span style={S.streakNum}>{streak}</span></div>
       </header>
-      <div style={S.statRow}><MiniStat label="Current streak" value={streak} icon={Flame}/><MiniStat label="Best streak" value={bestStreak} icon={Flame}/></div>
+      <div style={S.statRow}><MiniStat label="current streak" value={streak} icon={Flame}/><MiniStat label="best streak" value={bestStreak} icon={Flame}/></div>
       <button style={S.wrappedBtn} onClick={onWrapped}><Award size={16}/> Weekly Wrapped</button>
 
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Last 7 days</span>
+        <span style={S.cardTitle}>last 7 days</span>
         <div style={{display:"flex",alignItems:"center",marginTop:10,marginBottom:4}}>
           <div style={{width:128,flexShrink:0}}/>
           <div style={{display:"flex",flex:1,justifyContent:"space-between",paddingRight:4}}>
-            {week.map(d=><div key={d} style={{width:22,textAlign:"center",fontSize:10.5,color:"#A8978A"}}>{fmtDow(d)}</div>)}
+            {week.map(d=><div key={d} style={{width:22,textAlign:"center",fontSize:10.5,color:"var(--text-muted)"}}>{fmtDow(d)}</div>)}
           </div>
         </div>
         {goals.map(g=>{
@@ -1215,13 +1241,13 @@ function GoalsTab({goals,dailyLogs,today,streak,bestStreak,moods,privacyOn,exp,o
           return (
             <button key={g.id} style={S.gridRow} onClick={()=>onOpenHistory(g)}>
               <div style={{width:128,flexShrink:0,display:"flex",alignItems:"center",gap:5,overflow:"hidden"}}>
-                <Icon size={14} color="#1B2A4A" style={{opacity:0.7,flexShrink:0}}/>
+                <Icon size={14} color="var(--text)" style={{opacity:0.7,flexShrink:0}}/>
                 <span style={S.gridGoalLabel}>{isSub(g)?"↳ ":""}{dl(g)}</span>
-                {gs>0&&<span style={S.micro}><Flame size={10} color="#C15B3C"/>{gs}{isWeekly(g)?"w":""}</span>}
+                {gs>0&&<span style={S.micro}><Flame size={10} color="var(--error)"/>{gs}{isWeekly(g)?"w":""}</span>}
               </div>
               <div style={{display:"flex",flex:1,justifyContent:"space-between",paddingRight:4}}>
                 {week.map(d=>{
-                  if(!isWeekly(g) && !isActiveDay(g,d)) return <div key={d} style={{width:22,display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{width:6,height:6,borderRadius:3,background:"#EFE7D6"}}/></div>;
+                  if(!isWeekly(g) && !isActiveDay(g,d)) return <div key={d} style={{width:22,display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{width:6,height:6,borderRadius:3,background:"var(--surface-sunken)"}}/></div>;
                   const s=isWeekly(g) ? (statusFor(g,dailyLogs[d]?.values[g.id],targetForDate(g,d))==="full"?"full":"empty") : statusFor(g,dailyLogs[d]?.values[g.id],targetForDate(g,d));
                   return <div key={d} style={{width:22,display:"flex",alignItems:"center",justifyContent:"center"}}><StatusDot status={s}/></div>;
                 })}
@@ -1232,31 +1258,31 @@ function GoalsTab({goals,dailyLogs,today,streak,bestStreak,moods,privacyOn,exp,o
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Goals achieved — last 14 days</span>
-        <p style={S.cardSub}>Green = hit · amber = partial · rust = missed</p>
+        <span style={S.cardTitle}>goals achieved — last 14 days</span>
+        <p style={S.cardSub}>green = hit · amber = partial · rust = missed</p>
         <AchievementBars dailyScores={scores14}/>
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Mood — last 14 days</span>
+        <span style={S.cardTitle}>mood — last 14 days</span>
         <MoodChart moods={moods} today={today}/>
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>All-time hit rate by goal</span>
+        <span style={S.cardTitle}>all-time hit rate by goal</span>
         <div style={{display:"flex",flexDirection:"column",gap:10,marginTop:8}}>
           {lb.map(({g,rate})=>(
             <div key={g.id}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}><span style={S.rowLabel}>{dl(g)}</span><span style={S.progressFraction}>{rate}%</span></div>
-              <div style={S.progressTrack}><div style={{...S.progressFill,width:`${rate}%`,background:rate>=70?"#6B8F71":rate>=40?"#E8A33D":"#C15B3C"}}/></div>
+              <div style={S.progressTrack}><div style={{...S.progressFill,width:`${rate}%`,background:rate>=70?"var(--primary)":rate>=40?"var(--mustard-400)":"var(--error)"}}/></div>
             </div>
           ))}
         </div>
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Consistency heatmap — last 13 weeks</span>
-        <p style={S.cardSub}>Each square is a day, shaded by % of goals hit</p>
+        <span style={S.cardTitle}>consistency heatmap — last 13 weeks</span>
+        <p style={S.cardSub}>each square is a day, shaded by % of goals hit</p>
         <HeatmapCalendar goals={goals} dailyLogs={dailyLogs} today={today}/>
       </div>
     </div>
@@ -1266,15 +1292,15 @@ function GoalsTab({goals,dailyLogs,today,streak,bestStreak,moods,privacyOn,exp,o
 function AchievementBars({dailyScores}) {
   const MH=64;
   const any=dailyScores.some(d=>d.hasData);
-  if(!any) return <p style={S.emptyLine}>Finalise a few days and this fills in.</p>;
+  if(!any) return <p style={S.emptyLine}>finalise a few days and this fills in.</p>;
   return (
     <div style={{display:"flex",alignItems:"flex-end",height:96,gap:6,justifyContent:"space-between",paddingBottom:4,overflowX:"auto"}}>
       {dailyScores.map((d,i)=>(
         <div key={i} style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"flex-end",gap:5,height:"100%",flex:"0 0 auto",width:22}} title={fmtShort(d.date)}>
           <div style={{display:"flex",flexDirection:"column-reverse",width:"100%",borderRadius:4,overflow:"hidden"}}>
-            {d.hasData&&d.total>0?(<><div style={{height:(d.full/d.total)*MH,background:"#6B8F71",width:"100%"}}/><div style={{height:(d.partial/d.total)*MH,background:"#E8A33D",width:"100%"}}/><div style={{height:(d.missed/d.total)*MH,background:"#C15B3C",width:"100%"}}/></>):<div style={{height:3,background:"#EADFCB",width:"100%",borderRadius:2}}/>}
+            {d.hasData&&d.total>0?(<><div style={{height:(d.full/d.total)*MH,background:"var(--primary)",width:"100%"}}/><div style={{height:(d.partial/d.total)*MH,background:"var(--mustard-400)",width:"100%"}}/><div style={{height:(d.missed/d.total)*MH,background:"var(--error)",width:"100%"}}/></>):<div style={{height:3,background:"var(--line)",width:"100%",borderRadius:2}}/>}
           </div>
-          <span style={{fontSize:8,color:"#A8978A",whiteSpace:"nowrap"}}>{fmtShort(d.date)}</span>
+          <span style={{fontSize:8,color:"var(--text-muted)",whiteSpace:"nowrap"}}>{fmtShort(d.date)}</span>
         </div>
       ))}
     </div>
@@ -1284,17 +1310,17 @@ function AchievementBars({dailyScores}) {
 function MoodChart({moods,today}) {
   const days=Array.from({length:14},(_,i)=>addDays(today,-(13-i)));
   const pts=days.map(d=>({date:d,val:moods[d]??null})).filter(p=>p.val!==null);
-  if (pts.length<2) return <p style={S.emptyLine}>Log your mood on a few finalised days to see a trend.</p>;
+  if (pts.length<2) return <p style={S.emptyLine}>log your mood on a few finalised days to see a trend.</p>;
   const W=280,H=60,P=16;
   const xi=(i)=>P+(i/(pts.length-1))*(W-P*2);
   const yi=(v)=>H-((v-1)/4)*H+2;
   const path=pts.map((p,i)=>`${i===0?"M":"L"}${xi(i).toFixed(1)},${yi(p.val).toFixed(1)}`).join(" ");
   return (
     <svg viewBox={`0 0 ${W} ${H+24}`} style={{width:"100%",marginTop:8,overflow:"visible"}}>
-      <path d={path} fill="none" stroke="#E8A33D" strokeWidth={2} strokeLinejoin="round"/>
+      <path d={path} fill="none" stroke="var(--mustard-400)" strokeWidth={2} strokeLinejoin="round"/>
       {pts.map((p,i)=>(
         <g key={i}>
-          <circle cx={xi(i)} cy={yi(p.val)} r={4} fill="#E8A33D" stroke="#FAF6EE" strokeWidth={1.5}/>
+          <circle cx={xi(i)} cy={yi(p.val)} r={4} fill="var(--mustard-400)" stroke="var(--bg)" strokeWidth={1.5}/>
           <text x={xi(i)} y={H+20} textAnchor="middle" fontSize={11}>{MOODS[p.val-1]}</text>
         </g>
       ))}
@@ -1308,8 +1334,8 @@ function JournalTab({goals,dailyLogs,notes,moods,today,onJump}) {
   const days=Object.keys(dailyLogs).filter(d=>dailyLogs[d].finalized || Object.values(dailyLogs[d].values||{}).some(v=>v!==undefined&&v!=="")).sort().reverse();
   return (
     <div style={S.scroll}>
-      <header style={S.header}><h1 style={S.h1}>Journal</h1></header>
-      {days.length===0 && <div style={S.emptyCard}><BookOpen size={26} color="#C15B3C"/><p style={S.emptyTitle}>Nothing logged yet.</p><p style={S.emptyText}>Your days will appear here once you start logging — tap any to jump back and edit.</p></div>}
+      <header style={S.header}><h1 style={S.h1}>journal</h1></header>
+      {days.length===0 && <div style={S.emptyCard}><BookOpen size={26} color="var(--error)"/><p style={S.emptyTitle}>nothing logged yet.</p><p style={S.emptyText}>Your days will appear here once you start logging — tap any to jump back and edit.</p></div>}
       {days.map(d=>{
         const active=goals.filter(g=>!isWeekly(g)&&!isSub(g)&&isActiveDay(g,d));
         const full=active.filter(g=>statusFor(g,dailyLogs[d].values[g.id],targetForDate(g,d))==="full").length;
@@ -1318,7 +1344,7 @@ function JournalTab({goals,dailyLogs,notes,moods,today,onJump}) {
           <button key={d} style={S.journalCard} onClick={()=>onJump(d)}>
             <div style={S.journalTop}>
               <span style={S.journalDate}>{fmtPretty(d)}{d===today?" · today":""}</span>
-              <span style={S.journalMeta}>{m?MOODS[m-1]+" ":""}{dailyLogs[d].finalized?<Lock size={11} color="#A8978A"/>:null}</span>
+              <span style={S.journalMeta}>{m?MOODS[m-1]+" ":""}{dailyLogs[d].finalized?<Lock size={11} color="var(--text-muted)"/>:null}</span>
             </div>
             <div style={S.journalStat}>{active.length?`${full}/${active.length} goals hit`:"—"}</div>
             {note && <div style={S.journalNote}>“{note}”</div>}
@@ -1356,8 +1382,8 @@ function Measure({format,value,onChange}){
 function TargetsTab({bodyTargets,onCheckin,onUpdate,onAdd,onExport}) {
   return (
     <div style={S.scroll}>
-      <header style={S.header}><h1 style={S.h1}>Targets</h1></header>
-      {bodyTargets.length===0 && <div style={S.emptyCard}><Scale size={26} color="#C15B3C"/><p style={S.emptyTitle}>No targets yet.</p><p style={S.emptyText}>Add a body metric like weight or waist to track it over time.</p></div>}
+      <header style={S.header}><h1 style={S.h1}>targets</h1></header>
+      {bodyTargets.length===0 && <div style={S.emptyCard}><Scale size={26} color="var(--error)"/><p style={S.emptyTitle}>no targets yet.</p><p style={S.emptyText}>add a body metric like weight or waist to track it over time.</p></div>}
       {bodyTargets.map(t=>{
         const denom=(t.start-t.target);
         const prog=denom===0?0:Math.max(0,Math.min(1,(t.start-t.current)/denom));
@@ -1371,24 +1397,24 @@ function TargetsTab({bodyTargets,onCheckin,onUpdate,onAdd,onExport}) {
             <div style={S.cardHeadRow}>
               <span style={S.cardTitle}>{t.label}</span>
               <div style={{display:"flex",alignItems:"baseline",gap:8}}>
-                {chg!==0 && <span style={{fontSize:12,fontWeight:700,color:down?"#6B8F71":"#C15B3C"}}>{down?"▼":"▲"} {fmtMeasure(Math.abs(chg),t.unit,t.format)}</span>}
-                <span style={{fontFamily:"'JetBrains Mono',monospace",fontWeight:700,fontSize:22}}>{fmtMeasure(t.current,t.unit,t.format)}</span>
+                {chg!==0 && <span style={{fontSize:12,fontWeight:600,color:down?"var(--primary)":"var(--error)"}}>{down?"▼":"▲"} {fmtMeasure(Math.abs(chg),t.unit,t.format)}</span>}
+                <span style={{fontFamily:"'DM Mono',monospace",fontWeight:600,fontSize:22}}>{fmtMeasure(t.current,t.unit,t.format)}</span>
               </div>
             </div>
             <SvgLineChart history={hist} targetVal={t.target} unit={t.unit} format={t.format}/>
-            <div style={{display:"flex",justifyContent:"space-between",margin:"6px 0 4px"}}><span style={{fontSize:11,color:"#A8978A"}}>Progress to goal</span><span style={S.progressFraction}>{Math.round(prog*100)}%</span></div>
-            <div style={S.progressTrack}><div style={{...S.progressFill,width:`${prog*100}%`,background:"#6B8F71"}}/></div>
+            <div style={{display:"flex",justifyContent:"space-between",margin:"6px 0 4px"}}><span style={{fontSize:11,color:"var(--text-muted)"}}>progress to goal</span><span style={S.progressFraction}>{Math.round(prog*100)}%</span></div>
+            <div style={S.progressTrack}><div style={{...S.progressFill,width:`${prog*100}%`,background:"var(--primary)"}}/></div>
             <div style={S.statStrip}>
-              <div style={S.statCell}><span style={S.statLabel}>Start</span><span style={S.statVal}>{fmtMeasure(t.start,t.unit,t.format)}</span></div>
-              <div style={S.statCell}><span style={S.statLabel}>Current</span><span style={S.statVal}>{fmtMeasure(t.current,t.unit,t.format)}</span></div>
-              <div style={S.statCell}><span style={S.statLabel}>Target</span><span style={S.statVal}>{fmtMeasure(t.target,t.unit,t.format)}</span></div>
-              <div style={S.statCell}><span style={S.statLabel}>To go</span><span style={{...S.statVal,color:"#C15B3C"}}>{fmtMeasure(toGo,t.unit,t.format)}</span></div>
+              <div style={S.statCell}><span style={S.statLabel}>start</span><span style={S.statVal}>{fmtMeasure(t.start,t.unit,t.format)}</span></div>
+              <div style={S.statCell}><span style={S.statLabel}>current</span><span style={S.statVal}>{fmtMeasure(t.current,t.unit,t.format)}</span></div>
+              <div style={S.statCell}><span style={S.statLabel}>target</span><span style={S.statVal}>{fmtMeasure(t.target,t.unit,t.format)}</span></div>
+              <div style={S.statCell}><span style={S.statLabel}>to go</span><span style={{...S.statVal,color:"var(--error)"}}>{fmtMeasure(toGo,t.unit,t.format)}</span></div>
             </div>
             <button style={{...S.dashedBtn,marginTop:12,marginBottom:0,padding:"11px"}} onClick={()=>onCheckin(t)}><Plus size={15}/> Log check-in</button>
           </div>
         );
       })}
-      <button style={S.primaryBtn} onClick={onUpdate}>Update targets</button>
+      <button style={S.primaryBtn} onClick={onUpdate}>update targets</button>
       <button style={S.primaryBtn} onClick={onAdd}><Plus size={16}/> Add a new target</button>
       <button style={S.dashedBtn} onClick={onExport}><Download size={16}/> Export data as CSV</button>
     </div>
@@ -1396,7 +1422,7 @@ function TargetsTab({bodyTargets,onCheckin,onUpdate,onAdd,onExport}) {
 }
 
 function SvgLineChart({history,targetVal,unit,format}) {
-  if (!history||!history.length) return <p style={S.emptyLine}>No check-ins yet.</p>;
+  if (!history||!history.length) return <p style={S.emptyLine}>no check-ins yet.</p>;
   const W=300,H=118,PX=30,TOP=26,BOT=26;
   const vals=history.map(h=>Number(h.value));
   const lo=Math.min(...vals,targetVal)*0.985;
@@ -1411,16 +1437,16 @@ function SvgLineChart({history,targetVal,unit,format}) {
   return (
     <div style={{width:"100%",overflow:"visible",marginTop:6}}>
       <svg viewBox={`0 0 ${W} ${H}`} style={{width:"100%",overflow:"visible",display:"block"}}>
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#C15B3C" stopOpacity={0.15}/><stop offset="100%" stopColor="#C15B3C" stopOpacity={0}/></linearGradient></defs>
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--error)" stopOpacity={0.15}/><stop offset="100%" stopColor="var(--error)" stopOpacity={0}/></linearGradient></defs>
         <path d={`${pathD} L${xi(history.length-1).toFixed(1)},${H-BOT} L${xi(0).toFixed(1)},${H-BOT} Z`} fill="url(#lg)"/>
-        <line x1={PX} y1={tY} x2={W-PX} y2={tY} stroke="#6B8F71" strokeDasharray="4 3" strokeWidth={1.5} opacity={0.8}/>
-        <text x={W-PX} y={tY-5} textAnchor="end" fontSize={9} fill="#6B8F71">target {fmtMeasure(targetVal,unit,format)}</text>
-        <path d={pathD} fill="none" stroke="#C15B3C" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round"/>
+        <line x1={PX} y1={tY} x2={W-PX} y2={tY} stroke="var(--primary)" strokeDasharray="4 3" strokeWidth={1.5} opacity={0.8}/>
+        <text x={W-PX} y={tY-5} textAnchor="end" fontSize={9} fill="var(--primary)">target {fmtMeasure(targetVal,unit,format)}</text>
+        <path d={pathD} fill="none" stroke="var(--error)" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round"/>
         {history.map((h,i)=>(
           <g key={i}>
-            <circle cx={xi(i)} cy={yi(h.value)} r={labelIdx.has(i)?5:3.5} fill="#C15B3C" stroke="#FAF6EE" strokeWidth={2}/>
-            {labelIdx.has(i)&&<text x={xi(i)} y={yi(h.value)-11} textAnchor="middle" fontSize={10} fill="#1B2A4A" fontWeight="600">{fmtMeasure(h.value,unit,format)}</text>}
-            {(i===0||i===history.length-1)&&<text x={xi(i)} y={H-8} textAnchor="middle" fontSize={9} fill="#A8978A">{fmtShort(h.date)}</text>}
+            <circle cx={xi(i)} cy={yi(h.value)} r={labelIdx.has(i)?5:3.5} fill="var(--error)" stroke="var(--bg)" strokeWidth={2}/>
+            {labelIdx.has(i)&&<text x={xi(i)} y={yi(h.value)-11} textAnchor="middle" fontSize={10} fill="var(--primary)" fontWeight="600">{fmtMeasure(h.value,unit,format)}</text>}
+            {(i===0||i===history.length-1)&&<text x={xi(i)} y={H-8} textAnchor="middle" fontSize={9} fill="var(--text-muted)">{fmtShort(h.date)}</text>}
           </g>
         ))}
       </svg>
@@ -1445,17 +1471,17 @@ function GoalHistoryModal({goal,dailyLogs,today,personalBests,privacyOn,onEdit,o
   const range=hi-lo||1;
   return (
     <Modal onClose={onClose}>
-      <div style={S.histHeadRow}><Icon size={22} color="#1B2A4A"/><h2 style={{...S.modalTitle,margin:0,flex:1}}>{goal.label}</h2>{onEdit&&<button style={S.editBtn} onClick={()=>onEdit(goal)}><Pencil size={14} color="#1B2A4A"/> Edit</button>}</div>
+      <div style={S.histHeadRow}><Icon size={22} color="var(--text)"/><h2 style={{...S.modalTitle,margin:0,flex:1}}>{goal.label}</h2>{onEdit&&<button style={S.editBtn} onClick={()=>onEdit(goal)}><Pencil size={14} color="var(--text)"/> Edit</button>}</div>
       <p style={S.modalSub}>Current target {targetForDate(goal,today)} {goal.unit} · {cadenceLabel(goal)}{goal.private?" · private":""}</p>
       <div style={S.statRow}>
-        <MiniStat label="Streak" value={st} icon={Flame}/>
-        <MiniStat label="Best" value={bst} icon={Flame}/>
+        <MiniStat label="streak" value={st} icon={Flame}/>
+        <MiniStat label="best" value={bst} icon={Flame}/>
         <MiniStat label="7d" value={`${hit7}%`}/>
-        <MiniStat label="All-time" value={`${hitAll}%`}/>
+        <MiniStat label="all-time" value={`${hitAll}%`}/>
       </div>
       {pb&&<div style={{...S.card,display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
-        <div><span style={S.cardTitle}>Personal best</span><p style={{...S.cardSub,margin:"2px 0 0"}}>{fmtShort(pb.date)}</p></div>
-        <span style={{fontFamily:"'JetBrains Mono',monospace",fontWeight:700,fontSize:18}}>🏆 {pb.val} {goal.unit}</span>
+        <div><span style={S.cardTitle}>personal best</span><p style={{...S.cardSub,margin:"2px 0 0"}}>{fmtShort(pb.date)}</p></div>
+        <span style={{fontFamily:"'DM Mono',monospace",fontWeight:600,fontSize:18}}>🏆 {pb.val} {goal.unit}</span>
       </div>}
       {last14.length>0?(
         <div style={S.card}>
@@ -1470,8 +1496,8 @@ function GoalHistoryModal({goal,dailyLogs,today,personalBests,privacyOn,onEdit,o
             );})}
           </div>
         </div>
-      ):<p style={S.emptyLine}>No entries logged for this goal yet.</p>}
-      {goal.targetHistory.length>1&&<div style={S.card}><span style={S.cardTitle}>Target changes</span>{goal.targetHistory.map((t,i)=><div key={i} style={S.targetHistRow}><span style={S.rowTarget}>{fmtShort(t.date)}</span><span style={S.rowLabel}>{t.value} {goal.unit}</span></div>)}</div>}
+      ):<p style={S.emptyLine}>no entries logged for this goal yet.</p>}
+      {goal.targetHistory.length>1&&<div style={S.card}><span style={S.cardTitle}>target changes</span>{goal.targetHistory.map((t,i)=><div key={i} style={S.targetHistRow}><span style={S.rowTarget}>{fmtShort(t.date)}</span><span style={S.rowLabel}>{t.value} {goal.unit}</span></div>)}</div>}
     </Modal>
   );
 }
@@ -1486,12 +1512,12 @@ function CalendarModal({selectedDate,today,dailyLogs,onSelect,onClose}) {
   const chg=(d)=>{let m=vm+d,y=vy;if(m<0){m=11;y--;}if(m>11){m=0;y++;}setVm(m);setVy(y);};
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Jump to a date</h2>
-      <p style={S.modalSub}>Pick any past day to log or review.</p>
+      <h2 style={S.modalTitle}>jump to a date</h2>
+      <p style={S.modalSub}>pick any past day to log or review.</p>
       <div style={S.calHeader}>
-        <button style={S.dateArrow} onClick={()=>chg(-1)}><ChevronLeft size={18} color="#1B2A4A"/></button>
+        <button style={S.dateArrow} onClick={()=>chg(-1)}><ChevronLeft size={18} color="var(--text)"/></button>
         <span style={S.calMonthLabel}>{monthLabel(vy,vm)}</span>
-        <button style={S.dateArrow} onClick={()=>chg(1)}><ChevronRight size={18} color="#1B2A4A"/></button>
+        <button style={S.dateArrow} onClick={()=>chg(1)}><ChevronRight size={18} color="var(--text)"/></button>
       </div>
       <div style={S.calGrid}>
         {["M","T","W","T","F","S","S"].map((d,i)=><span key={i} style={S.calDowLabel}>{d}</span>)}
@@ -1513,12 +1539,12 @@ function FinalizeModal({date,currentMood,onClose,onConfirm}) {
   return (
     <Modal onClose={onClose}>
       <h2 style={S.modalTitle}>Finalise {fmtShort(date)}</h2>
-      <p style={S.modalSub}>Lock in the day and add it to your streak.</p>
+      <p style={S.modalSub}>lock in the day and add it to your streak.</p>
       <div style={{display:"flex",gap:8,justifyContent:"space-between",marginBottom:16}}>
         {MOODS.map((e,i)=><button key={i} style={{...S.moodBtnLg,...(mood===i+1?S.moodBtnLgActive:{})}} onClick={()=>setMood(mood===i+1?null:i+1)}>{e}</button>)}
       </div>
       <button style={S.primaryBtn} onClick={()=>onConfirm(mood)}><Lock size={16}/> Finalise day</button>
-      <button style={S.dashedBtn} onClick={onClose}>Cancel</button>
+      <button style={S.dashedBtn} onClick={onClose}>cancel</button>
     </Modal>
   );
 }
@@ -1535,26 +1561,26 @@ function ShareModal({date,goals,dailyLogs,moods,notes,streak,privacyOn,personalB
     const W=640,goalH=70,noteH=note?52:0,H=220+shown.length*goalH+noteH+40;
     canvas.width=W; canvas.height=H;
     const ctx=canvas.getContext("2d");
-    ctx.fillStyle="#FAF6EE"; ctx.fillRect(0,0,W,H);
-    ctx.fillStyle="#1B2A4A"; ctx.fillRect(0,0,8,H);
-    ctx.fillStyle="#A8978A"; ctx.font="600 12px Inter,sans-serif"; ctx.fillText("DAILY LEDGER",44,48);
-    ctx.fillStyle="#1B2A4A"; ctx.font="bold 32px Georgia,serif"; ctx.fillText("Accountable",44,88);
-    ctx.fillStyle="#6B6354"; ctx.font="500 14px Inter,sans-serif"; ctx.fillText(fmtPretty(date),44,112);
-    ctx.fillStyle="#FFF"; ctx.strokeStyle="#EADFCB"; ctx.lineWidth=1;
+    ctx.fillStyle="#FAFAF7"; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle="#357545"; ctx.fillRect(0,0,8,H);
+    ctx.fillStyle="#6D7268"; ctx.font="600 12px Manrope,sans-serif"; ctx.fillText("DAILY LEDGER",44,48);
+    ctx.fillStyle="#357545"; ctx.font="bold 32px Georgia,serif"; ctx.fillText("Accountable",44,88);
+    ctx.fillStyle="#6D7268"; ctx.font="500 14px Manrope,sans-serif"; ctx.fillText(fmtPretty(date),44,112);
+    ctx.fillStyle="#FFF"; ctx.strokeStyle="#E4E6DF"; ctx.lineWidth=1;
     rr(ctx,44,128,W-88,48,12); ctx.fill(); ctx.stroke();
-    ctx.fillStyle="#C15B3C"; ctx.font="bold 17px Inter,sans-serif";
+    ctx.fillStyle="#B4463F"; ctx.font="bold 17px Manrope,sans-serif";
     ctx.fillText(`🔥 ${streak} day streak${mood?" · "+MOODS[mood-1]+" "+MOOD_WORDS[mood]:""}`,64,158);
     let y=196;
     shown.forEach(g=>{
       const target=targetForDate(g,date),value=log.values[g.id],status=statusFor(g,value,target);
-      ctx.fillStyle="#FFF"; ctx.strokeStyle="#EADFCB"; ctx.lineWidth=1;
+      ctx.fillStyle="#FFF"; ctx.strokeStyle="#E4E6DF"; ctx.lineWidth=1;
       rr(ctx,44,y,W-88,58,12); ctx.fill(); ctx.stroke();
       ctx.fillStyle=g.accent||SC[status]; rr(ctx,44,y,6,58,0); ctx.fill();
       ctx.fillStyle=SC[status]; ctx.beginPath(); ctx.arc(80,y+29,10,0,Math.PI*2); ctx.fill();
       if(status==="full"){ctx.strokeStyle="#FFF";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(74,y+29);ctx.lineTo(79,y+34);ctx.lineTo(87,y+23);ctx.stroke();}
       const masked = privacyOn && g.private;
-      ctx.fillStyle="#1B2A4A"; ctx.font="600 15px Inter,sans-serif"; ctx.fillText(masked?"Private goal":g.label,102,y+24);
-      ctx.fillStyle="#A8978A"; ctx.font="400 12px Inter,sans-serif";
+      ctx.fillStyle="#357545"; ctx.font="600 15px Manrope,sans-serif"; ctx.fillText(masked?"Private goal":g.label,102,y+24);
+      ctx.fillStyle="#6D7268"; ctx.font="400 12px Manrope,sans-serif";
       const sub = masked ? (status==="full"?"completed":status==="empty"?"—":"logged") : `${value??"—"} ${g.unit} · ${g.type==="max"?"max":"min"} ${target} ${g.unit}`;
       ctx.fillText(sub,102,y+42);
       if(!masked){
@@ -1564,13 +1590,13 @@ function ShareModal({date,goals,dailyLogs,moods,notes,streak,privacyOn,personalB
         let rx=W-64;
         ctx.textAlign="right";
         if(isPB){ ctx.font="18px sans-serif"; ctx.fillText("🏆",rx,y+37); rx-=30; }
-        if(gst>0){ ctx.fillStyle="#C15B3C"; ctx.font="bold 14px Inter,sans-serif"; ctx.fillText(`🔥 ${gst}`,rx,y+36); }
+        if(gst>0){ ctx.fillStyle="#B4463F"; ctx.font="bold 14px Manrope,sans-serif"; ctx.fillText(`🔥 ${gst}`,rx,y+36); }
         ctx.textAlign="left";
       }
       y+=goalH;
     });
-    if(note){ctx.fillStyle="#6B6354";ctx.font="italic 13px Inter,sans-serif";ctx.fillText(`"${note.slice(0,76)}"`,44,y+22);}
-    ctx.fillStyle="#A8978A"; ctx.font="italic 11px Inter,sans-serif"; ctx.fillText("Logged, not perfect — and that's the point.",44,H-12);
+    if(note){ctx.fillStyle="#6D7268";ctx.font="italic 13px Manrope,sans-serif";ctx.fillText(`"${note.slice(0,76)}"`,44,y+22);}
+    ctx.fillStyle="#6D7268"; ctx.font="italic 11px Manrope,sans-serif"; ctx.fillText("Logged, not perfect — and that's the point.",44,H-12);
   },[date,goals,dailyLogs,streak,note,mood,privacyOn,personalBests]);
 
   const share=()=>{
@@ -1590,7 +1616,7 @@ function ShareModal({date,goals,dailyLogs,moods,notes,streak,privacyOn,personalB
   const download=()=>{const c=canvasRef.current,url=c.toDataURL("image/png"),a=document.createElement("a");a.href=url;a.download=`accountable-${date}.png`;document.body.appendChild(a);a.click();document.body.removeChild(a);};
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Share summary</h2>
+      <h2 style={S.modalTitle}>share summary</h2>
       <p style={S.modalSub}>A snapshot of {fmtPretty(date)}.</p>
       <div style={S.canvasWrap}><canvas ref={canvasRef} style={S.canvasImg}/></div>
       <button style={S.primaryBtn} onClick={share}><Share2 size={16}/> Share…</button>
@@ -1611,12 +1637,12 @@ function FeedbackModal({onClose}) {
   };
   return (
     <Modal onClose={onClose}>
-      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}><Bug size={20} color="#C15B3C"/><h2 style={{...S.modalTitle,margin:0}}>Report / suggest</h2></div>
-      <p style={S.modalSub}>Spotted a bug or want a feature? Jot it down and hit submit.</p>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}><Bug size={20} color="var(--error)"/><h2 style={{...S.modalTitle,margin:0}}>report / suggest</h2></div>
+      <p style={S.modalSub}>spotted a bug or want a feature? jot it down and hit submit.</p>
       <div style={S.segment}>
         {["Bug","Feature","Other"].map(k=><button key={k} style={{...S.segmentBtn,...(kind===k?S.segmentBtnActive:{})}} onClick={()=>setKind(k)}>{k}</button>)}
       </div>
-      <textarea style={{...S.noteInput,minHeight:120}} placeholder="Describe it here…" value={text} onChange={e=>setText(e.target.value)}/>
+      <textarea style={{...S.noteInput,minHeight:120}} placeholder="describe it here…" value={text} onChange={e=>setText(e.target.value)}/>
       <button style={{...S.primaryBtn,opacity:text.trim()?1:0.5}} disabled={!text.trim()} onClick={submit}><Check size={16}/> Submit</button>
     </Modal>
   );
@@ -1637,32 +1663,32 @@ function GoalFormModal({title,goal,categoriesCfg,parentOpts,currentTarget,onClos
   return (
     <Modal onClose={onClose}>
       <h2 style={S.modalTitle}>{title}</h2>
-      <label style={S.label}>Name</label>
+      <label style={S.label}>name</label>
       <input style={S.input} placeholder="e.g. Pages read" value={f.label} onChange={e=>set("label",e.target.value)}/>
-      <label style={S.label}>Icon</label>
+      <label style={S.label}>icon</label>
       <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14}}>
-        {Object.keys(NAMED_ICONS).map(nm=>{const NI=NAMED_ICONS[nm];const on=f.icon===nm;return <button key={nm} onClick={()=>set("icon",nm)} style={{width:38,height:38,borderRadius:10,border:on?"2px solid #1B2A4A":"1px solid #EADFCB",background:on?"#1B2A4A":"#FAF6EE",display:"flex",alignItems:"center",justifyContent:"center"}}><NI size={17} color={on?"#FAF6EE":"#1B2A4A"}/></button>;})}
+        {Object.keys(NAMED_ICONS).map(nm=>{const NI=NAMED_ICONS[nm];const on=f.icon===nm;return <button key={nm} onClick={()=>set("icon",nm)} style={{width:38,height:38,borderRadius:10,border:on?"2px solid var(--text)":"1px solid var(--line)",background:on?"var(--primary)":"var(--bg)",display:"flex",alignItems:"center",justifyContent:"center"}}><NI size={17} color={on?"var(--bg)":"var(--text)"}/></button>;})}
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:8}}>
-        <div><label style={S.label}>Unit</label><input style={S.input} placeholder="reps" value={f.unit} onChange={e=>set("unit",e.target.value)}/></div>
-        <div><label style={S.label}>Target</label><input inputMode="decimal" pattern="[0-9]*[.,]?[0-9]*" style={S.input} value={f.target} onChange={e=>set("target",e.target.value)}/></div>
+        <div><label style={S.label}>unit</label><input style={S.input} placeholder="reps" value={f.unit} onChange={e=>set("unit",e.target.value)}/></div>
+        <div><label style={S.label}>target</label><input inputMode="decimal" pattern="[0-9]*[.,]?[0-9]*" style={S.input} value={f.target} onChange={e=>set("target",e.target.value)}/></div>
       </div>
-      <label style={S.label}>Goal type</label>
+      <label style={S.label}>goal type</label>
       <div style={S.segment}>
-        <button style={{...S.segmentBtn,...(f.type==="min"?S.segmentBtnActive:{})}} onClick={()=>set("type","min")}>At least</button>
-        <button style={{...S.segmentBtn,...(f.type==="max"?S.segmentBtnActive:{})}} onClick={()=>set("type","max")}>At most</button>
+        <button style={{...S.segmentBtn,...(f.type==="min"?S.segmentBtnActive:{})}} onClick={()=>set("type","min")}>at least</button>
+        <button style={{...S.segmentBtn,...(f.type==="max"?S.segmentBtnActive:{})}} onClick={()=>set("type","max")}>at most</button>
       </div>
-      <label style={S.label}>Start date</label>
+      <label style={S.label}>start date</label>
       <input type="date" style={S.input} value={f.startDate} onChange={e=>set("startDate",e.target.value)}/>
       {parentOpts && parentOpts.length>0 && <>
-        <label style={S.label}>Sub-goal of</label>
+        <label style={S.label}>sub-goal of</label>
         <select style={S.select} value={f.parentId} onChange={e=>set("parentId",e.target.value)}>
-          <option value="">Nothing — top-level goal</option>
+          <option value="">nothing — top-level goal</option>
           {parentOpts.map(o=><option key={o.id} value={o.id}>{o.label}</option>)}
         </select>
-        <div style={{fontSize:11,color:"#A8978A",marginTop:-8,marginBottom:12}}>Sub-goals nest under their parent and are left out of your daily completion score.</div>
+        <div style={{fontSize:11,color:"var(--text-muted)",marginTop:-8,marginBottom:12}}>Sub-goals nest under their parent and are left out of your daily completion score.</div>
       </>}
-      <label style={S.label}>Schedule</label>
+      <label style={S.label}>schedule</label>
       <div style={S.chipRow}>
         {[["daily","Every day"],["weekdays","Weekdays"],["weekends","Weekends"],["custom","Custom"]].map(([v,l])=>
           <button key={v} style={{...S.chip,...(f.cadence===v?S.chipActive:{})}} onClick={()=>set("cadence",v)}>{l}</button>)}
@@ -1671,12 +1697,12 @@ function GoalFormModal({title,goal,categoriesCfg,parentOpts,currentTarget,onClos
         {["Su","Mo","Tu","We","Th","Fr","Sa"].map((d,i)=><button key={i} onClick={()=>toggleDay(i)} style={{...S.dayBtn,...(f.days.includes(i)?S.dayBtnActive:{})}}>{d}</button>)}
       </div>}
       <div style={{...S.card,display:"flex",alignItems:"center",gap:12,marginBottom:14,padding:14}}>
-        <Lock size={17} color="#1B2A4A"/>
-        <div style={{flex:1}}><div style={{fontSize:13.5,fontWeight:600}}>Private goal</div><div style={{fontSize:11,color:"#A8978A"}}>Tucked into a hidden section; shows only as status in shared images & charts.</div></div>
+        <Lock size={17} color="var(--text)"/>
+        <div style={{flex:1}}><div style={{fontSize:13.5,fontWeight:600}}>private goal</div><div style={{fontSize:11,color:"var(--text-muted)"}}>tucked into a hidden section; shows only as status in shared images & charts.</div></div>
         <Toggle on={f.private} onClick={()=>set("private",!f.private)}/>
       </div>
       <button style={{...S.primaryBtn,opacity:valid?1:0.5}} disabled={!valid} onClick={()=>onSave({...f,step:null,parentId:f.parentId||null,weeklyCount:Number(f.weeklyCount)||3})}>{goal?"Save changes":"Add goal"}</button>
-      {goal && onDelete && <button style={{...S.dashedBtn,borderColor:"#C15B3C",color:"#C15B3C",marginBottom:0}} onClick={()=>onDelete(goal)}><Trash2 size={16}/> Delete this goal</button>}
+      {goal && onDelete && <button style={{...S.dashedBtn,borderColor:"var(--error)",color:"var(--error)",marginBottom:0}} onClick={()=>onDelete(goal)}><Trash2 size={16}/> Delete this goal</button>}
     </Modal>
   );
 }
@@ -1692,86 +1718,86 @@ function SettingsModal({goals,deletedGoals,deletedTargets,onRestore,onRestoreTar
   const setPref=(k,v)=>setPrefs(p=>({...p,[k]:v}));
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Settings</h2>
-      <p style={S.modalSub}>Preferences, categories, backups.</p>
+      <h2 style={S.modalTitle}>settings</h2>
+      <p style={S.modalSub}>preferences, categories, backups.</p>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Display & privacy</span>
+        <span style={S.cardTitle}>display & privacy</span>
         <div style={{marginTop:8}}>
-          <SettingRow icon={Moon} label="Dark mode" on={darkMode} onToggle={()=>setDarkMode(v=>!v)}/>
-          <SettingRow icon={privacyOn?EyeOff:Eye} label="Privacy mode" sub="Hide private goals into a section; status-only in shares" on={privacyOn} onToggle={()=>setPrivacyOn(v=>!v)}/>
-          <SettingRow icon={Activity} label="Progress accent on goals" on={prefs.progressAccent!==false} onToggle={()=>setPref("progressAccent",!(prefs.progressAccent!==false))} last/>
+          <SettingRow icon={Moon} label="dark mode" on={darkMode} onToggle={()=>setDarkMode(v=>!v)}/>
+          <SettingRow icon={privacyOn?EyeOff:Eye} label="privacy mode" sub="Hide private goals into a section; status-only in shares" on={privacyOn} onToggle={()=>setPrivacyOn(v=>!v)}/>
+          <SettingRow icon={Activity} label="progress accent on goals" on={prefs.progressAccent!==false} onToggle={()=>setPref("progressAccent",!(prefs.progressAccent!==false))} last/>
         </div>
       </div>
 
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Feedback</span>
-        <p style={S.cardSub}>Found a bug or have an idea? Send it over.</p>
+        <span style={S.cardTitle}>feedback</span>
+        <p style={S.cardSub}>found a bug or have an idea? send it over.</p>
         <button style={{...S.dashedBtn,marginBottom:0}} onClick={onOpenFeedback}><Bug size={16}/> Report a bug / suggest a feature</button>
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Backup & restore</span>
+        <span style={S.cardTitle}>backup & restore</span>
         <p style={S.cardSub}>Your data lives on this device only. Save a backup to move phones or recover later.</p>
         <button style={S.primaryBtn} onClick={onExportJSON}><Download size={16}/> Download backup (.json)</button>
         <button style={{...S.dashedBtn,marginBottom:0}} onClick={()=>fileRef.current&&fileRef.current.click()}><Upload size={16}/> Restore from backup</button>
         <input ref={fileRef} type="file" accept="application/json,.json" style={{display:"none"}} onChange={onFile}/>
-        <p style={{fontSize:11,color:"#A8978A",margin:"10px 0 0",display:"flex",alignItems:"center",gap:5}}><Save size={12} color="#6B8F71"/> {savedAgo===null?"Saving…":savedAgo===0?"All changes saved":`Saved ${savedAgo}s ago`}</p>
+        <p style={{fontSize:11,color:"var(--text-muted)",margin:"10px 0 0",display:"flex",alignItems:"center",gap:5}}><Save size={12} color="var(--primary)"/> {savedAgo===null?"Saving…":savedAgo===0?"All changes saved":`Saved ${savedAgo}s ago`}</p>
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Goal buffers</span>
-        <p style={S.cardSub}>How far off target still counts as “partial” instead of a miss.</p>
+        <span style={S.cardTitle}>goal buffers</span>
+        <p style={S.cardSub}>how far off target still counts as “partial” instead of a miss.</p>
         {goals.map(g=>{
           const val=g.bufferPct??defaultBuffer(g.type);
           const tgt=g.targetHistory[g.targetHistory.length-1].value;
           const thr=Math.round((g.type==="max"?tgt*(1+val/100):tgt*(1-val/100))*10)/10;
           return (
-            <div key={g.id} style={{padding:"8px 0",borderBottom:"1px solid #F1EADA"}}>
+            <div key={g.id} style={{padding:"8px 0",borderBottom:"1px solid var(--surface-sunken)"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}><span style={S.rowLabel}>{g.label}</span><span style={S.progressFraction}>{g.type==="max"?"≤":"≥"} {thr} {g.unit}</span></div>
               <input type="range" min="0" max="60" step="5" value={val} onChange={e=>onUpdateBuffer(g.id,e.target.value)} style={S.slider}/>
-              <div style={{fontSize:10.5,color:"#A8978A",marginTop:2}}>“partial” zone edge · {val}% tolerance</div>
+              <div style={{fontSize:10.5,color:"var(--text-muted)",marginTop:2}}>“partial” zone edge · {val}% tolerance</div>
             </div>
           );
         })}
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Recently deleted goals</span>
-        {deletedGoals.length===0?<p style={S.cardSub}>Deleted goals show here so you can restore them.</p>:(
+        <span style={S.cardTitle}>recently deleted goals</span>
+        {deletedGoals.length===0?<p style={S.cardSub}>deleted goals show here so you can restore them.</p>:(
           <div style={{display:"flex",flexDirection:"column",gap:8,marginTop:8}}>
             {deletedGoals.map(({goal,deletedAt})=>(
-              <div key={goal.id} style={S.restoreRow}><div><div style={S.rowLabel}>{goal.label}</div><div style={S.rowTarget}>Deleted {fmtShort(deletedAt)}</div></div><button style={S.iconBtn} onClick={()=>onRestore(goal.id)}><RotateCcw size={16} color="#6B8F71"/></button></div>
+              <div key={goal.id} style={S.restoreRow}><div><div style={S.rowLabel}>{goal.label}</div><div style={S.rowTarget}>Deleted {fmtShort(deletedAt)}</div></div><button style={S.iconBtn} onClick={()=>onRestore(goal.id)}><RotateCcw size={16} color="var(--primary)"/></button></div>
             ))}
           </div>
         )}
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Recently deleted targets</span>
-        {deletedTargets.length===0?<p style={S.cardSub}>Deleted body targets show here so you can restore them.</p>:(
+        <span style={S.cardTitle}>recently deleted targets</span>
+        {deletedTargets.length===0?<p style={S.cardSub}>deleted body targets show here so you can restore them.</p>:(
           <div style={{display:"flex",flexDirection:"column",gap:8,marginTop:8}}>
             {deletedTargets.map(({target,deletedAt})=>(
-              <div key={target.id} style={S.restoreRow}><div><div style={S.rowLabel}>{target.label}</div><div style={S.rowTarget}>Deleted {fmtShort(deletedAt)}</div></div><button style={S.iconBtn} onClick={()=>onRestoreTarget(target.id)}><RotateCcw size={16} color="#6B8F71"/></button></div>
+              <div key={target.id} style={S.restoreRow}><div><div style={S.rowLabel}>{target.label}</div><div style={S.rowTarget}>Deleted {fmtShort(deletedAt)}</div></div><button style={S.iconBtn} onClick={()=>onRestoreTarget(target.id)}><RotateCcw size={16} color="var(--primary)"/></button></div>
             ))}
           </div>
         )}
       </div>
 
       <div style={S.card}>
-        <span style={S.cardTitle}>Start fresh</span>
+        <span style={S.cardTitle}>start fresh</span>
         <p style={S.cardSub}>Clears all logged progress and target check-in history. Keeps your goals and target definitions.</p>
-        <button style={{...S.dashedBtn,borderColor:"#C15B3C",color:"#C15B3C",marginBottom:0}} onClick={onReset}><Trash2 size={16}/> Erase progress & start fresh</button>
+        <button style={{...S.dashedBtn,borderColor:"var(--error)",color:"var(--error)",marginBottom:0}} onClick={onReset}><Trash2 size={16}/> Erase progress & start fresh</button>
       </div>
     </Modal>
   );
 }
 
 function SettingRow({icon:Icon,label,sub,on,onToggle,last}){
-  return <div style={{display:"flex",alignItems:"center",gap:12,padding:"10px 0",borderBottom:last?"none":"1px solid #F1EADA"}}>
-    <Icon size={17} color="#1B2A4A"/>
-    <div style={{flex:1}}><div style={{fontSize:13.5,fontWeight:500}}>{label}</div>{sub&&<div style={{fontSize:11,color:"#A8978A",marginTop:1,lineHeight:1.35}}>{sub}</div>}</div>
+  return <div style={{display:"flex",alignItems:"center",gap:12,padding:"10px 0",borderBottom:last?"none":"1px solid var(--surface-sunken)"}}>
+    <Icon size={17} color="var(--text)"/>
+    <div style={{flex:1}}><div style={{fontSize:13.5,fontWeight:500}}>{label}</div>{sub&&<div style={{fontSize:11,color:"var(--text-muted)",marginTop:1,lineHeight:1.35}}>{sub}</div>}</div>
     <Toggle on={on} onClick={onToggle}/>
   </div>;
 }
@@ -1786,34 +1812,34 @@ function UpdateTargetsModal({bodyTargets,onClose,onSave,onDelete}) {
   const FORMATS=[["decimal","Decimal"],["stlb","Stones + lb"]];
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Update targets</h2>
+      <h2 style={S.modalTitle}>update targets</h2>
       <p style={S.modalSub}>Edit each target's details and past check-ins. Current value is taken from your latest check-in.</p>
       {local.map(t=>{
         const sorted=[...t.history].map((h,i)=>({...h,_i:i})).sort((a,b)=>a.date<b.date?-1:1);
         return (
         <div key={t.id} style={S.card}>
-          <div style={S.profileRow}><input style={{...S.input,marginBottom:0,flex:1,fontWeight:700}} value={t.label} onChange={e=>upd(t.id,"label",e.target.value)}/><button style={S.iconBtn} onClick={()=>onDelete(t.id)}><Trash2 size={15} color="#A8978A"/></button></div>
+          <div style={S.profileRow}><input style={{...S.input,marginBottom:0,flex:1,fontWeight:600}} value={t.label} onChange={e=>upd(t.id,"label",e.target.value)}/><button style={S.iconBtn} onClick={()=>onDelete(t.id)}><Trash2 size={15} color="var(--text-muted)"/></button></div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginTop:10}}>
-            <div><label style={S.label}>Target</label><Measure format={t.format} value={t.target} onChange={v=>upd(t.id,"target",v)}/></div>
-            <div><label style={S.label}>Measurement</label>
+            <div><label style={S.label}>target</label><Measure format={t.format} value={t.target} onChange={v=>upd(t.id,"target",v)}/></div>
+            <div><label style={S.label}>measurement</label>
               <div style={{display:"flex",gap:4}}>{FORMATS.map(([v,l])=><button key={v} style={{...S.chip,flex:1,textAlign:"center",...(t.format===v?S.chipActive:{})}} onClick={()=>upd(t.id,"format",v)}>{v==="stlb"?"st+lb":"dec"}</button>)}</div>
             </div>
           </div>
-          <label style={{...S.label,marginTop:12}}>Check-ins</label>
+          <label style={{...S.label,marginTop:12}}>check-ins</label>
           <div style={{display:"flex",flexDirection:"column",gap:6}}>
-            {sorted.length===0 && <p style={S.emptyLine}>No check-ins yet — add one below.</p>}
+            {sorted.length===0 && <p style={S.emptyLine}>no check-ins yet — add one below.</p>}
             {sorted.map(h=>(
               <div key={h._i} style={{display:"flex",gap:6,alignItems:"center"}}>
                 <input type="date" style={{...S.input,marginBottom:0,flex:"0 0 44%"}} value={h.date} onChange={e=>updCi(t.id,h._i,"date",e.target.value)}/>
                 <div style={{flex:1}}><Measure format={t.format} value={h.value} onChange={v=>updCi(t.id,h._i,"value",v)}/></div>
-                <button style={S.iconBtn} onClick={()=>delCi(t.id,h._i)}><Trash2 size={14} color="#A8978A"/></button>
+                <button style={S.iconBtn} onClick={()=>delCi(t.id,h._i)}><Trash2 size={14} color="var(--text-muted)"/></button>
               </div>
             ))}
           </div>
           <button style={{...S.dashedBtn,marginTop:8,marginBottom:0,padding:"10px"}} onClick={()=>addCi(t.id)}><Plus size={14}/> Add check-in</button>
         </div>
       );})}
-      <button style={S.primaryBtn} onClick={()=>onSave(local)}>Save</button>
+      <button style={S.primaryBtn} onClick={()=>onSave(local)}>save</button>
     </Modal>
   );
 }
@@ -1823,11 +1849,11 @@ function CheckinModal({target,onClose,onSave}) {
   const [value,setValue]=useState(target.current);
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Log check-in</h2>
+      <h2 style={S.modalTitle}>log check-in</h2>
       <p style={S.modalSub}>{target.label} — record today's measurement.</p>
-      <label style={S.label}>Value</label>
+      <label style={S.label}>value</label>
       <div style={{marginBottom:14}}><Measure format={target.format} value={value} onChange={setValue}/></div>
-      <label style={S.label}>Date</label>
+      <label style={S.label}>date</label>
       <input type="date" style={S.input} value={date} onChange={e=>setDate(e.target.value)}/>
       <button style={S.primaryBtn} onClick={()=>onSave({date,value})}><Check size={16}/> Save check-in</button>
     </Modal>
@@ -1841,39 +1867,39 @@ function AddTargetModal({onClose,onSave}) {
   const FORMATS=[["decimal","Decimal"],["stlb","Stones + lb"]];
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>New target</h2>
-      <p style={S.modalSub}>Track a body metric over time. This first value becomes your starting check-in.</p>
-      <label style={S.label}>Name</label><input style={S.input} placeholder="e.g. Body fat" value={t.label} onChange={e=>set("label",e.target.value)}/>
-      <label style={S.label}>Measurement</label>
+      <h2 style={S.modalTitle}>new target</h2>
+      <p style={S.modalSub}>track a body metric over time. this first value becomes your starting check-in.</p>
+      <label style={S.label}>name</label><input style={S.input} placeholder="e.g. Body fat" value={t.label} onChange={e=>set("label",e.target.value)}/>
+      <label style={S.label}>measurement</label>
       <div style={S.chipRow}>{FORMATS.map(([v,l])=><button key={v} style={{...S.chip,...(t.format===v?S.chipActive:{})}} onClick={()=>set("format",v)}>{l}</button>)}</div>
-      {t.format==="decimal" && <><label style={S.label}>Unit</label><input style={S.input} placeholder="e.g. %, kg, in" value={t.unit} onChange={e=>set("unit",e.target.value)}/></>}
+      {t.format==="decimal" && <><label style={S.label}>unit</label><input style={S.input} placeholder="e.g. %, kg, in" value={t.unit} onChange={e=>set("unit",e.target.value)}/></>}
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-        <div><label style={S.label}>Starting value</label><Measure format={t.format} value={t.start} onChange={v=>set("start",v)}/></div>
-        <div><label style={S.label}>Goal</label><Measure format={t.format} value={t.target} onChange={v=>set("target",v)}/></div>
+        <div><label style={S.label}>starting value</label><Measure format={t.format} value={t.start} onChange={v=>set("start",v)}/></div>
+        <div><label style={S.label}>goal</label><Measure format={t.format} value={t.target} onChange={v=>set("target",v)}/></div>
       </div>
-      <label style={{...S.label,marginTop:14}}>Start date</label>
+      <label style={{...S.label,marginTop:14}}>start date</label>
       <input type="date" style={S.input} value={t.startDate} onChange={e=>set("startDate",e.target.value)}/>
-      <button style={{...S.primaryBtn,opacity:valid?1:0.5}} disabled={!valid} onClick={()=>onSave({...t,current:t.start,unit:t.format==="stlb"?"st":t.unit})}>Add target</button>
+      <button style={{...S.primaryBtn,opacity:valid?1:0.5}} disabled={!valid} onClick={()=>onSave({...t,current:t.start,unit:t.format==="stlb"?"st":t.unit})}>add target</button>
     </Modal>
   );
 }
 
 /* ── shared ── */
 function NavBtn({icon:Icon,label,active,onClick}) {
-  return <button onClick={onClick} style={{...S.navBtn,...(active?S.navBtnActive:{})}}><Icon size={17} color={active?"#FAF6EE":"#1B2A4A"} strokeWidth={active?2.4:2}/><span style={{...S.navLabel,color:active?"#FAF6EE":"#1B2A4A"}}>{label}</span></button>;
+  return <button onClick={onClick} style={{...S.navBtn,...(active?S.navBtnActive:{})}}><Icon size={17} color={active?"var(--bg)":"var(--text)"} strokeWidth={active?2.4:2}/><span style={{...S.navLabel,color:active?"var(--bg)":"var(--text)"}}>{label}</span></button>;
 }
 function Ibutton({children,onClick,title}) { return <button style={S.gearBtn} onClick={onClick} title={title}>{children}</button>; }
 function Modal({children,onClose}) {
-  return <div style={S.overlay} onClick={onClose}><div style={S.modal} onClick={e=>e.stopPropagation()}><button style={S.closeBtn} onClick={onClose}><X size={18} color="#1B2A4A"/></button>{children}</div></div>;
+  return <div style={S.overlay} onClick={onClose}><div style={S.modal} onClick={e=>e.stopPropagation()}><button style={S.closeBtn} onClick={onClose}><X size={18} color="var(--text)"/></button>{children}</div></div>;
 }
 function MiniStat({label,value,icon:Icon}) {
-  return <div style={S.miniStat}>{Icon?<span style={S.miniStatValue}><Icon size={14} color="#C15B3C" style={{marginRight:3,verticalAlign:-2}}/>{value}</span>:<span style={S.miniStatValue}>{value}</span>}<span style={S.miniStatLabel}>{label}</span></div>;
+  return <div style={S.miniStat}>{Icon?<span style={S.miniStatValue}><Icon size={14} color="var(--error)" style={{marginRight:3,verticalAlign:-2}}/>{value}</span>:<span style={S.miniStatValue}>{value}</span>}<span style={S.miniStatLabel}>{label}</span></div>;
 }
 function Toggle({on,onClick}) {
-  return <button onClick={onClick} style={{...S.toggle,background:on?"#6B8F71":"#D8CFBC"}}><div style={{...S.toggleKnob,transform:on?"translateX(18px)":"translateX(0)"}}/></button>;
+  return <button onClick={onClick} style={{...S.toggle,background:on?"var(--primary)":"var(--line)"}}><div style={{...S.toggleKnob,transform:on?"translateX(18px)":"translateX(0)"}}/></button>;
 }
 function CompactIcon({compact,color}) {
-  const c=color||"#1B2A4A";
+  const c=color||"var(--text)";
   return compact
     ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     : <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round"><line x1="3" y1="5" x2="21" y2="5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="3" y1="20" x2="21" y2="20"/></svg>;
@@ -1911,38 +1937,38 @@ function pickFocusGoal(goals,dailyLogs,today){
   rated.sort((a,b)=>a.r-b.r);
   return rated[0].r<100 ? rated[0].g : null;
 }
-const MOOD_TINTS=["","#C15B3C","#D0863C","#E8A33D","#6B8F71","#4F7CAC"];
+const MOOD_TINTS=["","var(--error)","#D0863C","var(--mustard-400)","var(--primary)","var(--info)"];
 function moodTintStyle(mood){
   if(!mood) return {};
-  const c=MOOD_TINTS[mood]||"#6B8F71";
+  const c=MOOD_TINTS[mood]||"var(--primary)";
   return {backgroundImage:`radial-gradient(120% 60% at 50% -8%, ${c}22 0%, ${c}0D 34%, rgba(0,0,0,0) 62%)`};
 }
 
 /* ── experimental components ── */
 function MomentumRing({score}){
   const r=26,c=2*Math.PI*r,pct=Math.min(Math.max(score,0),100)/100;
-  const col=score>=75?"#6B8F71":score>=45?"#E8A33D":"#C15B3C";
+  const col=score>=75?"var(--primary)":score>=45?"var(--mustard-400)":"var(--error)";
   return <svg width="72" height="72" viewBox="0 0 72 72" style={{flexShrink:0}}>
-    <circle cx="36" cy="36" r={r} fill="none" stroke="#EADFCB" strokeWidth="6"/>
+    <circle cx="36" cy="36" r={r} fill="none" stroke="var(--line)" strokeWidth="6"/>
     <circle cx="36" cy="36" r={r} fill="none" stroke={col} strokeWidth="6" strokeLinecap="round"
       strokeDasharray={c} strokeDashoffset={c*(1-pct)} transform="rotate(-90 36 36)" style={{transition:"stroke-dashoffset .6s ease"}}/>
-    <text x="36" y="40" textAnchor="middle" fontSize="18" fontWeight="700" fill="#1B2A4A" fontFamily="'JetBrains Mono',monospace">{score}</text>
+    <text x="36" y="40" textAnchor="middle" fontSize="18" fontWeight="700" fill="var(--primary)" fontFamily="'DM Mono',monospace">{score}</text>
   </svg>;
 }
 function MomentumCard({score}){
   return <div style={S.momCard}>
     <MomentumRing score={score}/>
     <div style={{flex:1}}>
-      <div style={{display:"flex",alignItems:"center",gap:6}}><Zap size={15} color="#E8A33D"/><span style={S.momTitle}>Momentum</span></div>
+      <div style={{display:"flex",alignItems:"center",gap:6}}><Zap size={15} color="var(--warning)"/><span style={S.momTitle}>momentum</span></div>
       <p style={S.momWord}>{momentumWord(score)}</p>
-      <p style={S.momSub}>Blends your 7-day hit rate with streak strength.</p>
+      <p style={S.momSub}>blends your 7-day hit rate with streak strength.</p>
     </div>
   </div>;
 }
 function FocusBanner({goal,value,target}){
   const Icon=GoalIcon(goal);
   return <div style={S.focusBanner}>
-    <div style={S.focusIconWrap}><Icon size={18} color="#FAF6EE"/></div>
+    <div style={S.focusIconWrap}><Icon size={18} color="var(--on-primary)"/></div>
     <div style={{flex:1,minWidth:0}}>
       <div style={S.focusTitle}>Today's focus · {goal.label}</div>
       <div style={S.focusSub}>Your toughest lately. Currently {value??"—"} {goal.unit} · aim {goal.type==="max"?"≤":"≥"} {target}.</div>
@@ -1963,15 +1989,15 @@ function ExperimentalTab({exp,toggleExp,onWrapped}){
   return (
     <div style={S.scroll}>
       <header style={S.header}>
-        <h1 style={S.h1}>Lab</h1>
-        <div style={S.labTag}><Beaker size={14} color="#6B8F71"/><span>experimental</span></div>
+        <h1 style={S.h1}>lab</h1>
+        <div style={S.labTag}><Beaker size={14} color="var(--primary)"/><span>experimental</span></div>
       </header>
-      <p style={{fontSize:13,color:"#A8978A",margin:"0 0 18px",lineHeight:1.55}}>Off-the-wall ideas in progress. Flip any on or off — they won't touch your data.</p>
+      <p style={{fontSize:13,color:"var(--text-muted)",margin:"0 0 18px",lineHeight:1.55}}>off-the-wall ideas in progress. flip any on or off — they won't touch your data.</p>
       {LAB_FEATURES.map(f=>{
         const Icon=f.icon, on=!!exp[f.key];
         return (
           <div key={f.key} style={{...S.labCard,...(on?S.labCardOn:{})}}>
-            <div style={S.labIconWrap}><Icon size={18} color={on?"#FAF6EE":"#1B2A4A"}/></div>
+            <div style={S.labIconWrap}><Icon size={18} color={on?"var(--bg)":"var(--text)"}/></div>
             <div style={{flex:1,minWidth:0}}>
               <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
                 <span style={S.labName}>{f.name}</span>
@@ -1984,7 +2010,7 @@ function ExperimentalTab({exp,toggleExp,onWrapped}){
           </div>
         );
       })}
-      <p style={{fontSize:11,color:"#C9BEA9",textAlign:"center",margin:"6px 0 0"}}>More arriving. Got an idea? Use the 🐞 button on Today.</p>
+      <p style={{fontSize:11,color:"#C9BEA9",textAlign:"center",margin:"6px 0 0"}}>more arriving. got an idea? use the 🐞 button on today.</p>
     </div>
   );
 }
@@ -2025,65 +2051,65 @@ function WrappedModal({goals,dailyLogs,moods,bodyTargets,notes,today,streak,priv
     const tgtH=stats.targetChanges.length?(28+stats.targetChanges.length*30):0;
     const H=328+goalsH+96+tgtH+56;
     const ctx=canvas.getContext("2d"); canvas.width=W; canvas.height=H;
-    const bg=ctx.createLinearGradient(0,0,0,H); bg.addColorStop(0,"#1B2A4A"); bg.addColorStop(1,"#24406B");
+    const bg=ctx.createLinearGradient(0,0,0,H); bg.addColorStop(0,"#22261F"); bg.addColorStop(1,"#24406B");
     ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
     // header
-    ctx.fillStyle="#E8A33D"; ctx.font="600 13px Inter,sans-serif"; ctx.fillText("WRAPPED",pad,56);
-    ctx.fillStyle="#FAF6EE"; ctx.font="bold 38px Georgia,serif"; ctx.fillText("Your roundup",pad,102);
-    ctx.fillStyle="#A9B6CE"; ctx.font="500 15px Inter,sans-serif"; ctx.fillText(`${fmtPretty(lo)}  —  ${fmtPretty(hi)}`,pad,130);
+    ctx.fillStyle="#E3BE5C"; ctx.font="600 13px Manrope,sans-serif"; ctx.fillText("WRAPPED",pad,56);
+    ctx.fillStyle="#FAFAF7"; ctx.font="bold 38px Georgia,serif"; ctx.fillText("Your roundup",pad,102);
+    ctx.fillStyle="#6D7268"; ctx.font="500 15px Manrope,sans-serif"; ctx.fillText(`${fmtPretty(lo)}  —  ${fmtPretty(hi)}`,pad,130);
     // streak chip
     ctx.fillStyle="rgba(232,163,61,0.16)"; rr(ctx,W-pad-96,40,96,30,15); ctx.fill();
-    ctx.fillStyle="#E8A33D"; ctx.font="700 13px Inter,sans-serif"; ctx.textAlign="center"; ctx.fillText(`🔥 ${streak} day`,W-pad-48,60); ctx.textAlign="left";
+    ctx.fillStyle="#E3BE5C"; ctx.font="700 13px Manrope,sans-serif"; ctx.textAlign="center"; ctx.fillText(`🔥 ${streak} day`,W-pad-48,60); ctx.textAlign="left";
     // three stat cards
     const cw=(W-pad*2-24)/3;
     const stat=(x,label,big,sub)=>{ ctx.fillStyle="rgba(255,255,255,0.07)"; rr(ctx,x,158,cw,96,16); ctx.fill();
-      ctx.fillStyle="#A9B6CE"; ctx.font="600 11px Inter,sans-serif"; ctx.fillText(label,x+16,186);
-      ctx.fillStyle="#FAF6EE"; ctx.font="bold 30px Georgia,serif"; ctx.fillText(big,x+16,224);
-      if(sub){ctx.fillStyle="#E8A33D";ctx.font="500 12px Inter,sans-serif";ctx.fillText(sub,x+16,244);} };
+      ctx.fillStyle="#6D7268"; ctx.font="600 11px Manrope,sans-serif"; ctx.fillText(label,x+16,186);
+      ctx.fillStyle="#FAFAF7"; ctx.font="bold 30px Georgia,serif"; ctx.fillText(big,x+16,224);
+      if(sub){ctx.fillStyle="#E3BE5C";ctx.font="500 12px Manrope,sans-serif";ctx.fillText(sub,x+16,244);} };
     stat(pad,"DAYS FINALISED",`${stats.finalised}/${stats.N}`,stats.finalised>=Math.ceil(stats.N*0.7)?"strong":"");
     stat(pad+cw+12,"GOALS HIT",`${stats.pct}%`,"of logged");
     stat(pad+cw*2+24,"AVG MOOD",stats.avgMood?MOODS[stats.avgMood-1]:"—",stats.avgMood?MOOD_WORDS[stats.avgMood]:"no data");
     // goal averages (centrepiece)
     let y=292;
-    ctx.fillStyle="#A9B6CE"; ctx.font="600 12px Inter,sans-serif"; ctx.fillText("GOAL AVERAGES",pad,y); y+=18;
-    if(!stats.perGoal.length){ ctx.fillStyle="#7E8CA8"; ctx.font="italic 13px Inter,sans-serif"; ctx.fillText("No goals logged in this range.",pad,y+14); y+=30; }
+    ctx.fillStyle="#6D7268"; ctx.font="600 12px Manrope,sans-serif"; ctx.fillText("GOAL AVERAGES",pad,y); y+=18;
+    if(!stats.perGoal.length){ ctx.fillStyle="#6D7268"; ctx.font="italic 13px Manrope,sans-serif"; ctx.fillText("No goals logged in this range.",pad,y+14); y+=30; }
     stats.perGoal.forEach(({g,avg,n,rate})=>{
       const masked = privacyOn && g.private;
-      ctx.fillStyle="#FAF6EE"; ctx.font="600 15px Inter,sans-serif"; ctx.fillText(masked?"Private goal":g.label,pad,y+14);
-      ctx.fillStyle="#FAF6EE"; ctx.font="bold 16px 'Georgia',serif"; ctx.textAlign="right";
+      ctx.fillStyle="#FAFAF7"; ctx.font="600 15px Manrope,sans-serif"; ctx.fillText(masked?"Private goal":g.label,pad,y+14);
+      ctx.fillStyle="#FAFAF7"; ctx.font="bold 16px 'Georgia',serif"; ctx.textAlign="right";
       ctx.fillText(masked?"—":`${Math.round(avg*10)/10} ${g.unit}`,W-pad,y+14); ctx.textAlign="left";
       // hit-rate bar
       const bw=W-pad*2;
       ctx.fillStyle="rgba(255,255,255,0.10)"; rr(ctx,pad,y+24,bw,6,3); ctx.fill();
-      ctx.fillStyle=rate>=70?"#6B8F71":rate>=40?"#E8A33D":"#C15B3C"; rr(ctx,pad,y+24,bw*rate/100,6,3); ctx.fill();
-      ctx.fillStyle="#7E8CA8"; ctx.font="500 10px Inter,sans-serif"; ctx.fillText(`hit ${rate}% · ${n} ${n===1?"day":"days"} logged`,pad,y+42);
+      ctx.fillStyle=rate>=70?"#357545":rate>=40?"#E3BE5C":"#B4463F"; rr(ctx,pad,y+24,bw*rate/100,6,3); ctx.fill();
+      ctx.fillStyle="#6D7268"; ctx.font="500 10px Manrope,sans-serif"; ctx.fillText(`hit ${rate}% · ${n} ${n===1?"day":"days"} logged`,pad,y+42);
       y+=46;
     });
     // day-by-day stacked bars
     y+=6;
-    ctx.fillStyle="#A9B6CE"; ctx.font="600 12px Inter,sans-serif"; ctx.fillText("DAY BY DAY",pad,y); y+=14;
+    ctx.fillStyle="#6D7268"; ctx.font="600 12px Manrope,sans-serif"; ctx.fillText("DAY BY DAY",pad,y); y+=14;
     const bx=pad, bw2=(W-pad*2)/stats.dayRatios.length, maxH=58, by=y;
     stats.dayRatios.forEach((d,i)=>{
       const x0=bx+i*bw2+2, w=Math.max(2,bw2-4);
       ctx.fillStyle="rgba(255,255,255,0.09)"; rr(ctx,x0,by,w,maxH,4); ctx.fill();
       if(d.total>0){ const fh=(d.full/d.total)*maxH,ph=(d.partial/d.total)*maxH,mh=(d.missed/d.total)*maxH; let yb=by+maxH;
-        ctx.fillStyle="#6B8F71"; ctx.fillRect(x0,yb-fh,w,fh); yb-=fh;
-        ctx.fillStyle="#E8A33D"; ctx.fillRect(x0,yb-ph,w,ph); yb-=ph;
-        ctx.fillStyle="#C15B3C"; ctx.fillRect(x0,yb-mh,w,mh); }
-      if(stats.dayRatios.length<=14){ ctx.fillStyle="#7E8CA8"; ctx.font="500 9px Inter,sans-serif"; ctx.textAlign="center"; ctx.fillText(fmtDow(d.date),x0+w/2,by+maxH+14); ctx.textAlign="left"; }
+        ctx.fillStyle="#357545"; ctx.fillRect(x0,yb-fh,w,fh); yb-=fh;
+        ctx.fillStyle="#E3BE5C"; ctx.fillRect(x0,yb-ph,w,ph); yb-=ph;
+        ctx.fillStyle="#B4463F"; ctx.fillRect(x0,yb-mh,w,mh); }
+      if(stats.dayRatios.length<=14){ ctx.fillStyle="#6D7268"; ctx.font="500 9px Manrope,sans-serif"; ctx.textAlign="center"; ctx.fillText(fmtDow(d.date),x0+w/2,by+maxH+14); ctx.textAlign="left"; }
     });
     y=by+maxH+(stats.dayRatios.length<=14?26:12);
     // targets
     if(stats.targetChanges.length){
-      ctx.fillStyle="#A9B6CE"; ctx.font="600 12px Inter,sans-serif"; ctx.fillText("TARGETS",pad,y); y+=10;
+      ctx.fillStyle="#6D7268"; ctx.font="600 12px Manrope,sans-serif"; ctx.fillText("TARGETS",pad,y); y+=10;
       stats.targetChanges.forEach(({t,delta})=>{
         ctx.fillStyle="rgba(255,255,255,0.05)"; rr(ctx,pad,y,W-pad*2,26,10); ctx.fill();
-        ctx.fillStyle="#FAF6EE"; ctx.font="600 13px Inter,sans-serif"; ctx.fillText(t.label,pad+16,y+18);
+        ctx.fillStyle="#FAFAF7"; ctx.font="600 13px Manrope,sans-serif"; ctx.fillText(t.label,pad+16,y+18);
         const down=delta<0, txt=(delta===0?"no change":`${down?"▼":"▲"} ${fmtMeasure(Math.abs(delta),t.unit,t.format)}`);
-        ctx.fillStyle=delta===0?"#7E8CA8":(down?"#7FB584":"#E39B7F"); ctx.font="700 13px Inter,sans-serif"; ctx.textAlign="right"; ctx.fillText(txt,W-pad-16,y+18); ctx.textAlign="left"; y+=30;
+        ctx.fillStyle=delta===0?"#6D7268":(down?"#7FB584":"#E39B7F"); ctx.font="700 13px Manrope,sans-serif"; ctx.textAlign="right"; ctx.fillText(txt,W-pad-16,y+18); ctx.textAlign="left"; y+=30;
       });
     }
-    ctx.fillStyle="#7E8CA8"; ctx.font="italic 12px Inter,sans-serif"; ctx.fillText("Accountable — logged, not perfect.",pad,H-18);
+    ctx.fillStyle="#6D7268"; ctx.font="italic 12px Manrope,sans-serif"; ctx.fillText("Accountable — logged, not perfect.",pad,H-18);
   },[stats,streak,lo,hi,privacyOn]);
 
   const share=()=>{
@@ -2098,16 +2124,16 @@ function WrappedModal({goals,dailyLogs,moods,bodyTargets,notes,today,streak,priv
   const setLast30=()=>{ setStart(addDays(today,-29)); setEnd(today); };
   return (
     <Modal onClose={onClose}>
-      <h2 style={S.modalTitle}>Weekly Wrapped</h2>
-      <p style={S.modalSub}>Pick a range, then share the card.</p>
+      <h2 style={S.modalTitle}>weekly wrapped</h2>
+      <p style={S.modalSub}>pick a range, then share the card.</p>
       <div style={{display:"flex",gap:6,marginBottom:12}}>
-        <button style={S.chip} onClick={setThisWeek}>This week</button>
-        <button style={S.chip} onClick={setLast7}>Last 7 days</button>
-        <button style={S.chip} onClick={setLast30}>Last 30 days</button>
+        <button style={S.chip} onClick={setThisWeek}>this week</button>
+        <button style={S.chip} onClick={setLast7}>last 7 days</button>
+        <button style={S.chip} onClick={setLast30}>last 30 days</button>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:14}}>
-        <div><label style={S.label}>From</label><input type="date" style={{...S.input,marginBottom:0}} value={start} max={end} onChange={e=>setStart(e.target.value)}/></div>
-        <div><label style={S.label}>To</label><input type="date" style={{...S.input,marginBottom:0}} value={end} min={start} onChange={e=>setEnd(e.target.value)}/></div>
+        <div><label style={S.label}>from</label><input type="date" style={{...S.input,marginBottom:0}} value={start} max={end} onChange={e=>setStart(e.target.value)}/></div>
+        <div><label style={S.label}>to</label><input type="date" style={{...S.input,marginBottom:0}} value={end} min={start} onChange={e=>setEnd(e.target.value)}/></div>
       </div>
       <div style={S.canvasWrap}><canvas ref={canvasRef} style={S.canvasImg}/></div>
       <button style={S.primaryBtn} onClick={share}><Share2 size={16}/> Share roundup</button>
@@ -2188,7 +2214,7 @@ function summaryRow(goal,dailyLogs,today){
 function ChartView({series,type,trend,height=190}){
   const ok=(v)=>v!==undefined&&v!==null&&!isNaN(v);
   const all=series.flatMap(s=>s.points.map(p=>p.value)).filter(ok);
-  if(!all.length||!series.length) return <p style={S.emptyLine}>No data for this selection.</p>;
+  if(!all.length||!series.length) return <p style={S.emptyLine}>no data for this selection.</p>;
   const labels=series[0].points.map(p=>p.label); const n=labels.length;
   const W=Math.max(300,n*(type==="bar"?40:34)); const H=height,PL=32,PB=26,PT=10,PR=10;
   let min=Math.min(...all,0),max=Math.max(...all); if(min===max)max=min+1;
@@ -2202,10 +2228,10 @@ function ChartView({series,type,trend,height=190}){
     if(trend==="avg"){ b=0; a=p0.reduce((x,p)=>x+p.value,0)/p0.length; }
     else { const m=p0.length; let sx=0,sy=0,sxy=0,sxx=0; p0.forEach((p,i)=>{sx+=i;sy+=p.value;sxy+=i*p.value;sxx+=i*i;}); b=(m*sxy-sx*sy)/((m*sxx-sx*sx)||1); a=(sy-b*sx)/m; }
     const xa=type==="bar"?xb(0):x(0), xz=type==="bar"?xb(p0.length-1):x(p0.length-1);
-    trendEl=<line x1={xa} y1={y(a)} x2={xz} y2={y(a+b*(p0.length-1))} stroke="#1B2A4A" strokeWidth={2} strokeDasharray="5 4" opacity={0.7}/>;
+    trendEl=<line x1={xa} y1={y(a)} x2={xz} y2={y(a+b*(p0.length-1))} stroke="var(--text)" strokeWidth={2} strokeDasharray="5 4" opacity={0.7}/>;
   }
   return <div style={{overflowX:"auto"}}><svg viewBox={`0 0 ${W} ${H}`} style={{width:n>10?W:"100%",maxWidth:"100%",display:"block"}}>
-    {[min,(min+max)/2,max].map((tv,i)=>(<g key={i}><line x1={PL} y1={y(tv)} x2={W-PR} y2={y(tv)} stroke="#EFE7D6"/><text x={2} y={y(tv)+3} fontSize={8.5} fill="#A8978A">{Math.round(tv*10)/10}</text></g>))}
+    {[min,(min+max)/2,max].map((tv,i)=>(<g key={i}><line x1={PL} y1={y(tv)} x2={W-PR} y2={y(tv)} stroke="var(--surface-sunken)"/><text x={2} y={y(tv)+3} fontSize={8.5} fill="var(--text-muted)">{Math.round(tv*10)/10}</text></g>))}
     {series.map((sr,si)=>{
       if(type==="bar"&&si===0) return sr.points.map((p,i)=>ok(p.value)?<rect key={i} x={xb(i)-bwid*0.32} y={y(p.value)} width={bwid*0.64} height={Math.max(0,H-PB-y(p.value))} rx={3} fill={sr.color}/>:null);
       let d="",prev=false;
@@ -2213,10 +2239,10 @@ function ChartView({series,type,trend,height=190}){
       return <g key={si}><path d={d} fill="none" stroke={sr.color} strokeWidth={2} strokeLinejoin="round"/>{sr.points.map((p,i)=>ok(p.value)?<circle key={i} cx={type==="bar"?xb(i):x(i)} cy={y(p.value)} r={3} fill={sr.color} stroke="#FFF" strokeWidth={1}/>:null)}</g>;
     })}
     {trendEl}
-    {labels.map((l,i)=>(n<=14||i%Math.ceil(n/14)===0)?<text key={i} x={type==="bar"?xb(i):x(i)} y={H-8} textAnchor="middle" fontSize={8.5} fill="#A8978A">{l}</text>:null)}
+    {labels.map((l,i)=>(n<=14||i%Math.ceil(n/14)===0)?<text key={i} x={type==="bar"?xb(i):x(i)} y={H-8} textAnchor="middle" fontSize={8.5} fill="var(--text-muted)">{l}</text>:null)}
   </svg></div>;
 }
-const DH_COLORS=["#C15B3C","#4F7CAC","#6B8F71","#9B6A9E","#E8A33D","#1B2A4A","#C9A227"];
+const DH_COLORS=["var(--error)","var(--info)","var(--primary)","var(--rose-600)","var(--mustard-400)","var(--text)","var(--mustard-400)"];
 function dhSelIds(sel){
   if(Array.isArray(sel.goalIds)&&sel.goalIds.length) return sel.goalIds;
   const out=[]; if(sel.goalId) out.push(sel.goalId); if(sel.goalId2) out.push(sel.goalId2);
@@ -2246,42 +2272,42 @@ function DataHubTab({goals,dailyLogs,moods,today,savedCharts,setSavedCharts}){
   const chip=(k,v,label)=><button style={{...S.chip,...(sel[k]===v?S.chipActive:{})}} onClick={()=>set(k,v)}>{label}</button>;
   return (
     <div style={S.scroll}>
-      <header style={S.header}><h1 style={S.h1}>Data hub</h1></header>
+      <header style={S.header}><h1 style={S.h1}>data hub</h1></header>
       <div style={S.card}>
-        <span style={S.cardTitle}>All goals at a glance</span>
+        <span style={S.cardTitle}>all goals at a glance</span>
         <div style={{overflowX:"auto",marginTop:8}}>
           <table style={{borderCollapse:"collapse",width:"100%",minWidth:640}}>
             <thead><tr>{["Goal","Avg","Latest","Best","Worst","Logged","Streak","Best","Hit%","7d"].map(h=><th key={h} style={S.th}>{h}</th>)}</tr></thead>
             <tbody>
               {goals.map(g=>{const r=summaryRow(g,dailyLogs,today);
-                if(r.avg===null) return <tr key={g.id}><td style={S.tdL}>{isSub(g)?"↳ ":""}{g.label}</td><td colSpan={9} style={{...S.td,color:"#A8978A"}}>no data yet</td></tr>;
+                if(r.avg===null) return <tr key={g.id}><td style={S.tdL}>{isSub(g)?"↳ ":""}{g.label}</td><td colSpan={9} style={{...S.td,color:"var(--text-muted)"}}>no data yet</td></tr>;
                 return <tr key={g.id}>
                   <td style={S.tdL}>{isSub(g)?"↳ ":""}{g.label}</td><td style={S.td}>{r.avg}</td><td style={S.td}>{r.latest}</td><td style={S.td}>{r.best}</td><td style={S.td}>{r.worst}</td>
                   <td style={S.td}>{r.n}</td><td style={S.td}>{r.cur}</td><td style={S.td}>{r.bst}</td><td style={S.td}>{r.rate}%</td>
-                  <td style={S.td}>{r.trend===0?"–":r.trend>0?<span style={{color:"#6B8F71"}}>▲</span>:<span style={{color:"#C15B3C"}}>▼</span>}</td>
+                  <td style={S.td}>{r.trend===0?"–":r.trend>0?<span style={{color:"var(--primary)"}}>▲</span>:<span style={{color:"var(--error)"}}>▼</span>}</td>
                 </tr>;})}
             </tbody>
           </table>
         </div>
       </div>
       <div style={S.card}>
-        <span style={S.cardTitle}>Chart builder</span>
-        <label style={{...S.label,marginTop:8}}>Goals <span style={{textTransform:"none",letterSpacing:0,fontWeight:500}}>— tap to add or remove</span></label>
+        <span style={S.cardTitle}>chart builder</span>
+        <label style={{...S.label,marginTop:8}}>goals <span style={{textTransform:"none",letterSpacing:0,fontWeight:500}}>— tap to add or remove</span></label>
         <div style={{...S.chipRow,flexWrap:"wrap"}}>
           {goalOpts.map(o=>{const on=ids.includes(o.id);const ci=ids.indexOf(o.id);
-            return <button key={o.id} onClick={()=>toggleId(o.id)} style={{...S.chip,...(on?{background:DH_COLORS[ci%DH_COLORS.length],borderColor:DH_COLORS[ci%DH_COLORS.length],color:"#FAF6EE"}:{})}}>{o.label}</button>;})}
+            return <button key={o.id} onClick={()=>toggleId(o.id)} style={{...S.chip,...(on?{background:DH_COLORS[ci%DH_COLORS.length],borderColor:DH_COLORS[ci%DH_COLORS.length],color:"var(--on-primary)"}:{})}}>{o.label}</button>;})}
         </div>
-        <label style={S.label}>Metric</label><div style={S.chipRow}>{chip("metric","value","Value")}{chip("metric","hit","% hit")}</div>
+        <label style={S.label}>metric</label><div style={S.chipRow}>{chip("metric","value","Value")}{chip("metric","hit","% hit")}</div>
         {sel.metric==="value" && <><label style={S.label}>Aggregate</label><div style={S.chipRow}>{chip("agg","avg","Average")}{chip("agg","total","Total")}{chip("agg","min","Min")}{chip("agg","max","Max")}</div></>}
         <label style={S.label}>Group by</label><div style={S.chipRow}>{chip("group","day","Day")}{chip("group","week","Week")}{chip("group","month","Month")}{chip("group","weekday","Weekday")}</div>
         <label style={S.label}>Range</label><div style={{...S.chipRow,flexWrap:"wrap"}}>{chip("range","7","7d")}{chip("range","30","30d")}{chip("range","90","90d")}{chip("range","all","All")}{chip("range","rel","Past X days")}{chip("range","since","Since…")}{chip("range","custom","Custom")}</div>
         {sel.range==="since" && <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
           <input type="date" style={{...S.input,marginBottom:0}} value={sel.since||""} onChange={e=>set("since",e.target.value)}/>
-          <span style={{fontSize:12,color:"#A8978A",whiteSpace:"nowrap"}}>→ {sel.includeToday?"today":"yesterday"}</span>
+          <span style={{fontSize:12,color:"var(--text-muted)",whiteSpace:"nowrap"}}>→ {sel.includeToday?"today":"yesterday"}</span>
         </div>}
         {sel.range==="rel" && <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
           <input inputMode="numeric" pattern="[0-9]*" style={{...S.input,marginBottom:0,width:90}} value={sel.days??7} onChange={e=>set("days",e.target.value.replace(/[^0-9]/g,""))}/>
-          <span style={{fontSize:12,color:"#A8978A"}}>days back from {sel.includeToday?"today":"yesterday"}</span>
+          <span style={{fontSize:12,color:"var(--text-muted)"}}>days back from {sel.includeToday?"today":"yesterday"}</span>
         </div>}
         {sel.range!=="custom" && <div style={S.chipRow}>
           <button style={{...S.chip,...(!sel.includeToday?S.chipActive:{})}} onClick={()=>set("includeToday",false)}>Up to yesterday</button>
@@ -2290,11 +2316,11 @@ function DataHubTab({goals,dailyLogs,moods,today,savedCharts,setSavedCharts}){
         {sel.range==="custom" && <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:12}}><input type="date" style={{...S.input,marginBottom:0}} value={sel.from} onChange={e=>set("from",e.target.value)}/><input type="date" style={{...S.input,marginBottom:0}} value={sel.to} onChange={e=>set("to",e.target.value)}/></div>}
         <label style={S.label}>Chart</label><div style={S.chipRow}>{chip("type","line","Line")}{chip("type","bar","Bar")}</div>
         <label style={S.label}>Trend line</label><div style={S.chipRow}>{chip("trend","off","Off")}{chip("trend","avg","Mean")}{chip("trend","lin","Linear")}</div>
-        {sel.type==="bar"&&ser.length>1&&<div style={{fontSize:10.5,color:"#A8978A",marginBottom:6}}>Bars show the first goal; the rest overlay as lines.</div>}
+        {sel.type==="bar"&&ser.length>1&&<div style={{fontSize:10.5,color:"var(--text-muted)",marginBottom:6}}>Bars show the first goal; the rest overlay as lines.</div>}
         <div style={{marginTop:6}}><ChartView series={ser} type={sel.type} trend={sel.trend}/></div>
-        <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:4,marginBottom:4,fontSize:10.5,color:"#A8978A"}}>
+        <div style={{display:"flex",gap:10,flexWrap:"wrap",marginTop:4,marginBottom:4,fontSize:10.5,color:"var(--text-muted)"}}>
           {ser.map((s,i)=><span key={i}><span style={{color:s.color}}>●</span> {s.name}</span>)}
-          {sel.trend!=="off"&&<span><span style={{color:"#1B2A4A"}}>▬</span> {sel.trend==="avg"?"mean":"trend"}</span>}
+          {sel.trend!=="off"&&<span><span style={{color:"var(--text)"}}>▬</span> {sel.trend==="avg"?"mean":"trend"}</span>}
           <span>· {dhRangeLabel(sel)}</span>
         </div>
         <div style={{display:"flex",gap:8,marginTop:8}}>
@@ -2304,215 +2330,215 @@ function DataHubTab({goals,dailyLogs,moods,today,savedCharts,setSavedCharts}){
       </div>
       {savedCharts.length>0 && savedCharts.map(c=>{const b=buildSeriesArr(c.sel,ctx);
         return <div key={c.id} style={S.card}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span style={S.cardTitle}>{c.name}</span><button style={S.iconBtn} onClick={()=>setSavedCharts(x=>x.filter(y=>y.id!==c.id))}><Trash2 size={14} color="#A8978A"/></button></div>
-          <div style={{fontSize:10.5,color:"#A8978A",marginBottom:6}}>{b.ser.map(s=>s.name).join(" · ")} · {c.sel.metric==="hit"?"% hit":c.sel.agg} · by {c.sel.group} · {dhRangeLabel(c.sel)}</div>
-          <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:4,fontSize:10.5,color:"#A8978A"}}>{b.ser.map((s,i)=><span key={i}><span style={{color:s.color}}>●</span> {s.name}</span>)}</div>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span style={S.cardTitle}>{c.name}</span><button style={S.iconBtn} onClick={()=>setSavedCharts(x=>x.filter(y=>y.id!==c.id))}><Trash2 size={14} color="var(--text-muted)"/></button></div>
+          <div style={{fontSize:10.5,color:"var(--text-muted)",marginBottom:6}}>{b.ser.map(s=>s.name).join(" · ")} · {c.sel.metric==="hit"?"% hit":c.sel.agg} · by {c.sel.group} · {dhRangeLabel(c.sel)}</div>
+          <div style={{display:"flex",gap:10,flexWrap:"wrap",marginBottom:4,fontSize:10.5,color:"var(--text-muted)"}}>{b.ser.map((s,i)=><span key={i}><span style={{color:s.color}}>●</span> {s.name}</span>)}</div>
           <ChartView series={b.ser} type={c.sel.type} trend={c.sel.trend}/>
         </div>;})}
     </div>
   );
 }
 
-const CSS=`@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+const CSS=`@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..400,100&family=Lexend:wght@500&family=Manrope:wght@400;500;600&family=DM+Mono:wght@400&display=swap');
 *{box-sizing:border-box;}
 html,body{margin:0;}
 body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  background:#F4EEE1;
-  background-image:radial-gradient(120% 80% at 50% -10%, #FFFDF8 0%, #FAF6EE 42%, #F3ECDD 100%);
+  background:var(--bg);
+  background-image:radial-gradient(120% 80% at 50% -10%, var(--surface) 0%, var(--bg) 42%, var(--surface-sunken) 100%);
   background-attachment:fixed;}
 button{font-family:inherit;cursor:pointer;transition:transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;}
 button:active{transform:scale(0.97);}
 input,textarea{font-family:inherit;}
 input,textarea{transition:border-color .2s ease, box-shadow .2s ease;}
-input:focus,textarea:focus{outline:none;border-color:#1B2A4A;box-shadow:0 0 0 3px rgba(27,42,74,0.08);}
+input:focus,textarea:focus{outline:none;border-color:var(--text);box-shadow:0 0 0 3px rgba(34,81,47,0.08);}
 .jbm,input[type=number]{font-variant-numeric:tabular-nums;}
-input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:4px;background:linear-gradient(90deg,#6B8F71 0%,#EADFCB 0%);outline:none;}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:#1B2A4A;cursor:pointer;box-shadow:0 2px 6px rgba(27,42,74,0.3);border:3px solid #FAF6EE;}
-input[type=range]::-moz-range-thumb{width:22px;height:22px;border:3px solid #FAF6EE;border-radius:50%;background:#1B2A4A;cursor:pointer;box-shadow:0 2px 6px rgba(27,42,74,0.3);}
+input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:4px;background:linear-gradient(90deg,var(--primary) 0%,var(--line) 0%);outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 6px rgba(34,81,47,0.3);border:3px solid var(--bg);}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border:3px solid var(--bg);border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 6px rgba(34,81,47,0.3);}
 ::-webkit-scrollbar{width:0;height:0;}
 @keyframes sheet-up{from{transform:translateY(28px);opacity:0.6;}to{transform:translateY(0);opacity:1;}}
 @keyframes fade-in{from{opacity:0;}to{opacity:1;}}`;
 
 const SH={
-  card:"0 1px 2px rgba(27,42,74,0.04), 0 10px 28px -16px rgba(27,42,74,0.18)",
-  soft:"0 1px 2px rgba(27,42,74,0.05)",
-  btn:"0 6px 18px -8px rgba(27,42,74,0.5)",
-  nav:"0 10px 34px -8px rgba(27,42,74,0.28)",
+  card:"var(--shadow-md)",
+  soft:"var(--shadow-sm)",
+  btn:"var(--shadow-md)",
+  nav:"var(--shadow-lg)",
 };
-const CARD_BORDER="1px solid rgba(224,212,188,0.9)";
+const CARD_BORDER="1px solid var(--line)";
 
 const S={
-  app:{fontFamily:"'Inter',sans-serif",minHeight:"100vh",maxWidth:480,margin:"0 auto",position:"relative",color:"#1B2A4A"},
-  appDark:{filter:"invert(1) hue-rotate(180deg)"},
+  app:{fontFamily:"'Manrope',sans-serif",minHeight:"100vh",maxWidth:480,margin:"0 auto",position:"relative",color:"var(--text)"},
+  appDark:{},
   scroll:{padding:"30px 20px 124px"},
   header:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:18},
-  h1:{fontFamily:"'Source Serif 4',serif",fontSize:29,fontWeight:700,margin:0,letterSpacing:-0.4},
-  streakBadge:{display:"flex",alignItems:"center",gap:5,background:"linear-gradient(135deg,#FFFFFF,#FBF7EF)",border:CARD_BORDER,borderRadius:22,padding:"8px 15px",boxShadow:SH.soft},
-  streakNum:{fontFamily:"'JetBrains Mono',monospace",fontWeight:700,fontSize:15,fontVariantNumeric:"tabular-nums"},
-  streakBadgeSm:{display:"flex",alignItems:"center",gap:4,background:"linear-gradient(135deg,#FFFFFF,#FBF7EF)",border:CARD_BORDER,borderRadius:18,padding:"5px 10px",boxShadow:SH.soft},
-  streakNumSm:{fontFamily:"'JetBrains Mono',monospace",fontWeight:700,fontSize:13,fontVariantNumeric:"tabular-nums"},
-  gearBtn:{background:"linear-gradient(135deg,#FFFFFF,#FBF7EF)",border:CARD_BORDER,borderRadius:"50%",width:37,height:37,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:SH.soft},
+  h1:{fontFamily:"'Lexend',serif",fontSize:29,fontWeight:600,margin:0,letterSpacing:-0.4},
+  streakBadge:{display:"flex",alignItems:"center",gap:5,background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:22,padding:"8px 15px",boxShadow:SH.soft},
+  streakNum:{fontFamily:"'DM Mono',monospace",fontWeight:600,fontSize:15,fontVariantNumeric:"tabular-nums"},
+  streakBadgeSm:{display:"flex",alignItems:"center",gap:4,background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:18,padding:"5px 10px",boxShadow:SH.soft},
+  streakNumSm:{fontFamily:"'DM Mono',monospace",fontWeight:600,fontSize:13,fontVariantNumeric:"tabular-nums"},
+  gearBtn:{background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:"50%",width:37,height:37,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:SH.soft},
   dateNav:{display:"flex",alignItems:"center",justifyContent:"space-between",background:"#FFF",border:CARD_BORDER,borderRadius:16,padding:"8px 6px",marginBottom:16,boxShadow:SH.card},
   dateArrow:{background:"transparent",border:"none",padding:8,display:"flex",borderRadius:10},
   dateLabelWrap:{display:"flex",flexDirection:"column",alignItems:"center",background:"transparent",border:"none",padding:4},
   dateLabel:{fontSize:14,fontWeight:600,letterSpacing:-0.2},
-  dateBackTag:{fontSize:9.5,color:"#E8A33D",fontFamily:"'JetBrains Mono',monospace",marginTop:2,letterSpacing:0.5,textTransform:"uppercase"},
-  lockBanner:{display:"flex",alignItems:"center",gap:6,background:"linear-gradient(135deg,#F3ECDD,#EFE7D6)",border:CARD_BORDER,borderRadius:12,padding:"9px 13px",fontSize:12,color:"#6B6354",marginBottom:14},
-  reopenLink:{marginLeft:"auto",background:"transparent",border:"none",color:"#C15B3C",fontWeight:700,fontSize:12,textDecoration:"underline"},
+  dateBackTag:{fontSize:9.5,color:"var(--warning)",fontFamily:"'DM Mono',monospace",marginTop:2,letterSpacing:0.5,textTransform:"none"},
+  lockBanner:{display:"flex",alignItems:"center",gap:6,background:"linear-gradient(135deg,var(--surface-sunken),var(--surface-sunken))",border:CARD_BORDER,borderRadius:12,padding:"9px 13px",fontSize:12,color:"var(--text-muted)",marginBottom:14},
+  reopenLink:{marginLeft:"auto",background:"transparent",border:"none",color:"var(--error)",fontWeight:600,fontSize:12,textDecoration:"underline"},
   chainWrap:{display:"flex",gap:5,marginBottom:16},
   chainLink:{flex:1,height:9,borderRadius:5,border:"1.5px solid",transition:"background 0.35s, border-color .35s"},
   progressRow:{display:"flex",justifyContent:"space-between",marginBottom:7,alignItems:"baseline"},
-  progressLabel:{fontSize:12.5,color:"#8A7D6B",fontWeight:500},
-  progressFraction:{fontFamily:"'JetBrains Mono',monospace",fontSize:13,fontWeight:700,fontVariantNumeric:"tabular-nums"},
-  progressTrack:{height:7,background:"#EADFCB",borderRadius:5,overflow:"hidden"},
-  progressFill:{height:"100%",background:"linear-gradient(90deg,#7BA081,#6B8F71)",transition:"width 0.5s cubic-bezier(.4,0,.2,1)"},
-  emptyCard:{background:"#FFF",border:"1.5px dashed #D8CFBC",borderRadius:18,padding:"30px 22px",textAlign:"center",marginBottom:16,display:"flex",flexDirection:"column",alignItems:"center",gap:6},
-  emptyTitle:{fontFamily:"'Source Serif 4',serif",fontSize:18,fontWeight:700,margin:"6px 0 0"},
-  emptyText:{fontSize:13,color:"#A8978A",margin:0,lineHeight:1.55,maxWidth:280},
-  emptyLine:{fontSize:12,color:"#A8978A",margin:"10px 0 2px",fontStyle:"italic"},
-  momCard:{display:"flex",alignItems:"center",gap:16,background:"linear-gradient(135deg,#FFFFFF,#FBF6EC)",border:CARD_BORDER,borderRadius:18,padding:16,marginBottom:14,boxShadow:SH.card},
-  momTitle:{fontSize:12,fontWeight:700,letterSpacing:1,textTransform:"uppercase",color:"#A8978A"},
-  momWord:{fontFamily:"'Source Serif 4',serif",fontSize:21,fontWeight:700,margin:"3px 0 2px"},
-  momSub:{fontSize:11.5,color:"#A8978A",margin:0,lineHeight:1.4},
-  focusBanner:{display:"flex",alignItems:"center",gap:12,background:"linear-gradient(135deg,#20335A,#1B2A4A)",borderRadius:18,padding:"14px 16px",marginBottom:14,boxShadow:SH.card},
+  progressLabel:{fontSize:12.5,color:"var(--text-muted)",fontWeight:500},
+  progressFraction:{fontFamily:"'DM Mono',monospace",fontSize:13,fontWeight:600,fontVariantNumeric:"tabular-nums"},
+  progressTrack:{height:7,background:"var(--line)",borderRadius:5,overflow:"hidden"},
+  progressFill:{height:"100%",background:"linear-gradient(90deg,#7BA081,var(--primary))",transition:"width 0.5s cubic-bezier(.4,0,.2,1)"},
+  emptyCard:{background:"#FFF",border:"1.5px dashed var(--line)",borderRadius:18,padding:"30px 22px",textAlign:"center",marginBottom:16,display:"flex",flexDirection:"column",alignItems:"center",gap:6},
+  emptyTitle:{fontFamily:"'Lexend',serif",fontSize:18,fontWeight:600,margin:"6px 0 0"},
+  emptyText:{fontSize:13,color:"var(--text-muted)",margin:0,lineHeight:1.55,maxWidth:280},
+  emptyLine:{fontSize:12,color:"var(--text-muted)",margin:"10px 0 2px",fontStyle:"italic"},
+  momCard:{display:"flex",alignItems:"center",gap:16,background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:18,padding:16,marginBottom:14,boxShadow:SH.card},
+  momTitle:{fontSize:12,fontWeight:600,letterSpacing:1,textTransform:"none",color:"var(--text-muted)"},
+  momWord:{fontFamily:"'Lexend',serif",fontSize:21,fontWeight:600,margin:"3px 0 2px"},
+  momSub:{fontSize:11.5,color:"var(--text-muted)",margin:0,lineHeight:1.4},
+  focusBanner:{display:"flex",alignItems:"center",gap:12,background:"linear-gradient(135deg,#20335A,var(--text))",borderRadius:18,padding:"14px 16px",marginBottom:14,boxShadow:SH.card},
   focusIconWrap:{width:38,height:38,borderRadius:12,background:"rgba(232,163,61,0.9)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
-  focusTitle:{fontSize:13.5,fontWeight:700,color:"#FAF6EE"},
-  focusSub:{fontSize:11.5,color:"#A9B6CE",marginTop:2,lineHeight:1.4},
-  weekCard:{background:"linear-gradient(135deg,#FFFFFF,#FBF7EF)",border:CARD_BORDER,borderRadius:18,padding:15,marginBottom:16,boxShadow:SH.card},
+  focusTitle:{fontSize:13.5,fontWeight:600,color:"var(--on-primary)"},
+  focusSub:{fontSize:11.5,color:"var(--text-muted)",marginTop:2,lineHeight:1.4},
+  weekCard:{background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:18,padding:15,marginBottom:16,boxShadow:SH.card},
   weekHead:{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:8},
-  cardSub2:{fontSize:11,color:"#A8978A",fontFamily:"'JetBrains Mono',monospace"},
-  weekRow:{display:"flex",alignItems:"center",gap:12,padding:"9px 0",borderTop:"1px solid #F1EADA"},
+  cardSub2:{fontSize:11,color:"var(--text-muted)",fontFamily:"'DM Mono',monospace"},
+  weekRow:{display:"flex",alignItems:"center",gap:12,padding:"9px 0",borderTop:"1px solid var(--surface-sunken)"},
   weekRowMid:{flex:1,minWidth:0,background:"transparent",border:"none",textAlign:"left",padding:0},
   catBlock:{marginBottom:14},
-  subBlock:{marginLeft:14,paddingLeft:12,borderLeft:"2px solid #EADFCB",display:"flex",flexDirection:"column",gap:8},
+  subBlock:{marginLeft:14,paddingLeft:12,borderLeft:"2px solid var(--line)",display:"flex",flexDirection:"column",gap:8},
   subHeader:{display:"flex",alignItems:"center",gap:6,width:"100%",background:"transparent",border:"none",padding:"2px 2px",marginBottom:0},
-  subTitle:{fontSize:10.5,fontWeight:700,letterSpacing:1.1,textTransform:"uppercase",color:"#A8978A"},
-  rowSub:{padding:"9px 12px 11px 12px",borderRadius:13,background:"#FDFAF3"},
+  subTitle:{fontSize:10.5,fontWeight:600,letterSpacing:1.1,textTransform:"none",color:"var(--text-muted)"},
+  rowSub:{padding:"9px 12px 11px 12px",borderRadius:13,background:"var(--surface)"},
   catHeader:{display:"flex",alignItems:"center",gap:6,width:"100%",background:"transparent",border:"none",padding:"6px 2px",marginBottom:4},
-  catTitle:{fontSize:11,fontWeight:700,letterSpacing:1.2,textTransform:"uppercase",color:"#A8978A"},
-  catCount:{marginLeft:"auto",fontSize:11,fontFamily:"'JetBrains Mono',monospace",color:"#A8978A",fontVariantNumeric:"tabular-nums"},
-  row:{position:"relative",overflow:"hidden",display:"flex",justifyContent:"space-between",alignItems:"center",background:"#FFF",border:CARD_BORDER,borderLeft:"4px solid #D8CFBC",borderRadius:16,padding:"12px 14px 14px 14px",gap:6,boxShadow:SH.card,transition:"box-shadow .2s ease, opacity .2s ease"},
-  accentTrack:{position:"absolute",left:0,right:0,bottom:0,height:3,background:"#F1EADA"},
+  catTitle:{fontSize:11,fontWeight:600,letterSpacing:1.2,textTransform:"none",color:"var(--text-muted)"},
+  catCount:{marginLeft:"auto",fontSize:11,fontFamily:"'DM Mono',monospace",color:"var(--text-muted)",fontVariantNumeric:"tabular-nums"},
+  row:{position:"relative",overflow:"hidden",display:"flex",justifyContent:"space-between",alignItems:"center",background:"#FFF",border:CARD_BORDER,borderLeft:"4px solid var(--line)",borderRadius:16,padding:"12px 14px 14px 14px",gap:6,boxShadow:SH.card,transition:"box-shadow .2s ease, opacity .2s ease"},
+  accentTrack:{position:"absolute",left:0,right:0,bottom:0,height:3,background:"var(--surface-sunken)"},
   moodChipRow:{display:"flex",gap:8,marginBottom:14},
-  moodChip:{background:"#FFF",border:CARD_BORDER,borderRadius:20,padding:"6px 12px",fontSize:12.5,fontWeight:600,color:"#6B6354",boxShadow:SH.soft},
+  moodChip:{background:"#FFF",border:CARD_BORDER,borderRadius:20,padding:"6px 12px",fontSize:12.5,fontWeight:600,color:"var(--text-muted)",boxShadow:SH.soft},
   controlRow:{display:"flex",gap:8,marginBottom:12,justifyContent:"flex-end"},
   pillsRow:{display:"flex",alignItems:"center",gap:8,marginBottom:16},
-  ctrlIcon:{display:"flex",alignItems:"center",justifyContent:"center",width:36,height:36,background:"#FFF",border:CARD_BORDER,borderRadius:11,color:"#6B6354",boxShadow:SH.soft},
-  ctrlBtn:{display:"flex",alignItems:"center",gap:6,background:"#FFF",border:CARD_BORDER,borderRadius:11,padding:"9px 13px",fontSize:12.5,fontWeight:600,color:"#6B6354",boxShadow:SH.soft},
-  ctrlBtnOn:{background:"#1B2A4A",color:"#FAF6EE",border:"1px solid #1B2A4A"},
+  ctrlIcon:{display:"flex",alignItems:"center",justifyContent:"center",width:36,height:36,background:"#FFF",border:CARD_BORDER,borderRadius:11,color:"var(--text-muted)",boxShadow:SH.soft},
+  ctrlBtn:{display:"flex",alignItems:"center",gap:6,background:"#FFF",border:CARD_BORDER,borderRadius:11,padding:"9px 13px",fontSize:12.5,fontWeight:600,color:"var(--text-muted)",boxShadow:SH.soft},
+  ctrlBtnOn:{background:"var(--primary)",color:"var(--on-primary)",border:"1px solid var(--text)"},
   accentFill:{height:"100%",transition:"width .4s ease, background .3s ease"},
-  todayChip:{background:"linear-gradient(135deg,#243863,#1B2A4A)",color:"#FAF6EE",border:"none",borderRadius:12,padding:"8px 12px",fontSize:12,fontWeight:700,boxShadow:SH.soft},
-  eveningBanner:{display:"flex",alignItems:"center",gap:8,background:"linear-gradient(135deg,#FBF3E2,#F7ECD6)",border:"1px solid #ECD9B4",borderRadius:14,padding:"11px 13px",fontSize:12.5,color:"#7A5E28",marginBottom:14},
-  eveningBtn:{background:"#1B2A4A",color:"#FAF6EE",border:"none",borderRadius:9,padding:"7px 12px",fontSize:12,fontWeight:700,flexShrink:0},
-  consistCard:{display:"flex",alignItems:"center",gap:12,background:"linear-gradient(135deg,#FFFFFF,#F7FAF6)",border:CARD_BORDER,borderRadius:18,padding:"14px 16px",marginBottom:14,boxShadow:SH.card},
-  consistSub:{fontSize:11.5,color:"#A8978A",marginTop:2},
-  consistNum:{fontFamily:"'JetBrains Mono',monospace",fontWeight:700,fontSize:20,color:"#6B8F71"},
+  todayChip:{background:"linear-gradient(135deg,var(--info),var(--text))",color:"var(--on-primary)",border:"none",borderRadius:12,padding:"8px 12px",fontSize:12,fontWeight:600,boxShadow:SH.soft},
+  eveningBanner:{display:"flex",alignItems:"center",gap:8,background:"linear-gradient(135deg,var(--surface-sunken),var(--secondary-soft))",border:"1px solid var(--line)",borderRadius:14,padding:"11px 13px",fontSize:12.5,color:"#7A5E28",marginBottom:14},
+  eveningBtn:{background:"var(--primary)",color:"var(--on-primary)",border:"none",borderRadius:9,padding:"7px 12px",fontSize:12,fontWeight:600,flexShrink:0},
+  consistCard:{display:"flex",alignItems:"center",gap:12,background:"linear-gradient(135deg,var(--surface),var(--primary-soft))",border:CARD_BORDER,borderRadius:18,padding:"14px 16px",marginBottom:14,boxShadow:SH.card},
+  consistSub:{fontSize:11.5,color:"var(--text-muted)",marginTop:2},
+  consistNum:{fontFamily:"'DM Mono',monospace",fontWeight:600,fontSize:20,color:"var(--primary)"},
   grip:{display:"flex",alignItems:"center",padding:"6px 2px",flexShrink:0,borderRadius:8},
   rowLeft:{display:"flex",alignItems:"center",gap:10,minWidth:0,cursor:"pointer",background:"transparent",border:"none",textAlign:"left",padding:0,flex:1},
   rowLabelLine:{display:"flex",alignItems:"center",gap:5,flexWrap:"wrap"},
   rowLabel:{fontSize:14,fontWeight:600},
-  pencilBtn:{background:"#FAF6EE",border:CARD_BORDER,borderRadius:7,padding:3,display:"flex",flexShrink:0},
-  rowTarget:{fontSize:11.5,color:"#A8978A",marginTop:2},
-  micro:{display:"flex",alignItems:"center",gap:2,fontSize:10.5,fontFamily:"'JetBrains Mono',monospace",color:"#6B6354",flexShrink:0},
+  pencilBtn:{background:"var(--bg)",border:CARD_BORDER,borderRadius:7,padding:3,display:"flex",flexShrink:0},
+  rowTarget:{fontSize:11.5,color:"var(--text-muted)",marginTop:2},
+  micro:{display:"flex",alignItems:"center",gap:2,fontSize:10.5,fontFamily:"'DM Mono',monospace",color:"var(--text-muted)",flexShrink:0},
   numWrap:{display:"flex",alignItems:"center",gap:4,flexShrink:0},
-  stepBtn:{width:26,height:26,borderRadius:"50%",border:CARD_BORDER,background:"linear-gradient(135deg,#FFFFFF,#F6F0E6)",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:SH.soft},
-  numInput:{width:52,border:"1.5px solid",borderRadius:9,padding:"7px 3px",fontSize:13.5,fontFamily:"'JetBrains Mono',monospace",textAlign:"center",background:"#FAF6EE",fontVariantNumeric:"tabular-nums"},
-  statusDot:{width:19,height:19,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:"0 1px 2px rgba(27,42,74,0.15)"},
+  stepBtn:{width:26,height:26,borderRadius:"50%",border:CARD_BORDER,background:"linear-gradient(135deg,var(--surface),#F6F0E6)",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:SH.soft},
+  numInput:{width:52,border:"1.5px solid",borderRadius:9,padding:"7px 3px",fontSize:13.5,fontFamily:"'DM Mono',monospace",textAlign:"center",background:"var(--bg)",fontVariantNumeric:"tabular-nums"},
+  statusDot:{width:19,height:19,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:"0 1px 2px rgba(34,81,47,0.15)"},
   noteInput:{width:"100%",border:CARD_BORDER,borderRadius:14,padding:"12px 14px",fontSize:13.5,marginBottom:14,resize:"vertical",background:"#FFF",lineHeight:1.5,display:"block",boxShadow:SH.soft},
   statRow:{display:"flex",gap:10,marginBottom:16},
-  miniStat:{flex:1,background:"linear-gradient(135deg,#FFFFFF,#FBF7EF)",border:CARD_BORDER,borderRadius:16,padding:"13px 10px",display:"flex",flexDirection:"column",alignItems:"center",gap:2,boxShadow:SH.card},
-  miniStatValue:{fontFamily:"'JetBrains Mono',monospace",fontSize:18,fontWeight:700,fontVariantNumeric:"tabular-nums"},
-  miniStatLabel:{fontSize:10.5,color:"#A8978A"},
+  miniStat:{flex:1,background:"linear-gradient(135deg,var(--surface),var(--surface))",border:CARD_BORDER,borderRadius:16,padding:"13px 10px",display:"flex",flexDirection:"column",alignItems:"center",gap:2,boxShadow:SH.card},
+  miniStatValue:{fontFamily:"'DM Mono',monospace",fontSize:18,fontWeight:600,fontVariantNumeric:"tabular-nums"},
+  miniStatLabel:{fontSize:10.5,color:"var(--text-muted)"},
   card:{background:"#FFF",border:CARD_BORDER,borderRadius:18,padding:17,marginBottom:16,width:"100%",textAlign:"left",boxShadow:SH.card},
   cardHeadRow:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4},
-  cardTitle:{fontSize:13,fontWeight:700,color:"#1B2A4A",letterSpacing:-0.1},
-  cardSub:{fontSize:11,color:"#A8978A",margin:"2px 0 10px",lineHeight:1.5},
+  cardTitle:{fontSize:13,fontWeight:600,color:"var(--text)",letterSpacing:-0.1},
+  cardSub:{fontSize:11,color:"var(--text-muted)",margin:"2px 0 10px",lineHeight:1.5},
   sparkRow:{display:"flex",alignItems:"flex-end",gap:10,height:100,overflowX:"auto",marginTop:8},
   sparkCol:{display:"flex",flexDirection:"column",alignItems:"center",gap:3,flex:"1 1 0",minWidth:20,justifyContent:"flex-end",height:"100%"},
-  sparkBar:{width:14,background:"#C15B3C",borderRadius:"4px 4px 0 0"},
-  sparkValue:{fontSize:9.5,fontWeight:600,fontFamily:"'JetBrains Mono',monospace"},
-  sparkLabel:{fontSize:9,color:"#A8978A"},
-  targetHistRow:{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:"1px solid #F1EADA"},
-  gridRow:{display:"flex",alignItems:"center",width:"100%",background:"transparent",border:"none",borderTop:"1px solid #F1EADA",padding:"9px 0"},
+  sparkBar:{width:14,background:"var(--error)",borderRadius:"4px 4px 0 0"},
+  sparkValue:{fontSize:9.5,fontWeight:600,fontFamily:"'DM Mono',monospace"},
+  sparkLabel:{fontSize:9,color:"var(--text-muted)"},
+  targetHistRow:{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:"1px solid var(--surface-sunken)"},
+  gridRow:{display:"flex",alignItems:"center",width:"100%",background:"transparent",border:"none",borderTop:"1px solid var(--surface-sunken)",padding:"9px 0"},
   gridGoalLabel:{fontSize:11.5,fontWeight:600,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"},
   histHeadRow:{display:"flex",alignItems:"center",gap:10,marginBottom:4},
   profileRow:{display:"flex",alignItems:"center",gap:12},
-  restoreRow:{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#FAF6EE",border:CARD_BORDER,borderRadius:12,padding:"10px 12px"},
-  projBanner:{display:"flex",alignItems:"center",gap:7,background:"#F0F4EF",border:"1px solid #DCE6DC",borderRadius:12,padding:"9px 12px",fontSize:12,color:"#4A6B50",marginTop:12,lineHeight:1.4},
-  freezeCard:{display:"flex",alignItems:"center",gap:10,background:"#EEF3F8",border:"1px solid #D7E2ED",borderRadius:16,padding:"12px 14px",marginBottom:16},
-  wrappedBtn:{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"linear-gradient(135deg,#E8A33D,#D98C2B)",color:"#3A2A12",border:"none",borderRadius:14,padding:"13px",fontSize:14,fontWeight:700,marginBottom:16,boxShadow:"0 8px 20px -10px rgba(216,140,43,0.8)"},
+  restoreRow:{display:"flex",justifyContent:"space-between",alignItems:"center",background:"var(--bg)",border:CARD_BORDER,borderRadius:12,padding:"10px 12px"},
+  projBanner:{display:"flex",alignItems:"center",gap:7,background:"var(--primary-soft)",border:"1px solid var(--primary-soft)",borderRadius:12,padding:"9px 12px",fontSize:12,color:"var(--primary)",marginTop:12,lineHeight:1.4},
+  freezeCard:{display:"flex",alignItems:"center",gap:10,background:"var(--info-soft)",border:"1px solid var(--line)",borderRadius:16,padding:"12px 14px",marginBottom:16},
+  wrappedBtn:{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"var(--secondary-soft)",color:"var(--on-secondary-soft)",border:"none",borderRadius:14,padding:"13px",fontSize:14,fontWeight:600,marginBottom:16,boxShadow:"var(--shadow-md)"},
   journalCard:{display:"block",width:"100%",textAlign:"left",background:"#FFF",border:CARD_BORDER,borderRadius:16,padding:14,marginBottom:10,boxShadow:SH.card},
   journalTop:{display:"flex",justifyContent:"space-between",alignItems:"center"},
   journalDate:{fontSize:13.5,fontWeight:600},
   journalMeta:{display:"flex",alignItems:"center",gap:4,fontSize:15},
-  journalStat:{fontSize:12,color:"#6B6354",marginTop:4,fontFamily:"'JetBrains Mono',monospace"},
-  journalNote:{fontSize:12.5,color:"#A8978A",fontStyle:"italic",marginTop:6,lineHeight:1.4},
-  labTag:{display:"flex",alignItems:"center",gap:5,background:"#F0F4EF",border:"1px solid #DCE6DC",borderRadius:20,padding:"6px 12px",fontSize:11,fontWeight:600,color:"#4A6B50",letterSpacing:0.5,textTransform:"uppercase"},
+  journalStat:{fontSize:12,color:"var(--text-muted)",marginTop:4,fontFamily:"'DM Mono',monospace"},
+  journalNote:{fontSize:12.5,color:"var(--text-muted)",fontStyle:"italic",marginTop:6,lineHeight:1.4},
+  labTag:{display:"flex",alignItems:"center",gap:5,background:"var(--primary-soft)",border:"1px solid var(--primary-soft)",borderRadius:20,padding:"6px 12px",fontSize:11,fontWeight:600,color:"var(--primary)",letterSpacing:0.5,textTransform:"none"},
   labCard:{display:"flex",alignItems:"flex-start",gap:12,background:"#FFF",border:CARD_BORDER,borderRadius:18,padding:16,marginBottom:12,boxShadow:SH.card,transition:"border-color .2s ease, box-shadow .2s ease"},
-  labCardOn:{border:"1px solid #B8D0BC",boxShadow:"0 1px 2px rgba(27,42,74,0.04), 0 12px 30px -16px rgba(107,143,113,0.5)"},
-  labIconWrap:{width:38,height:38,borderRadius:12,background:"#F3ECDD",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
-  labName:{fontSize:14.5,fontWeight:700},
-  labPill:{fontSize:9.5,fontWeight:700,letterSpacing:0.6,textTransform:"uppercase",color:"#6B8F71",background:"#EEF3EE",borderRadius:6,padding:"3px 7px"},
-  labDesc:{fontSize:12.5,color:"#8A7D6B",margin:"5px 0 0",lineHeight:1.5},
-  labInline:{display:"inline-flex",alignItems:"center",gap:5,background:"#F3ECDD",border:"none",borderRadius:9,padding:"7px 11px",fontSize:12,fontWeight:600,color:"#1B2A4A",marginTop:9},
-  labNote:{fontSize:11.5,color:"#4F7CAC",margin:"8px 0 0",fontWeight:600},
+  labCardOn:{border:"1px solid #B8D0BC",boxShadow:"0 1px 2px rgba(34,81,47,0.04), 0 12px 30px -16px rgba(107,143,113,0.5)"},
+  labIconWrap:{width:38,height:38,borderRadius:12,background:"var(--surface-sunken)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
+  labName:{fontSize:14.5,fontWeight:600},
+  labPill:{fontSize:9.5,fontWeight:600,letterSpacing:0.6,textTransform:"none",color:"var(--primary)",background:"var(--primary-soft)",borderRadius:6,padding:"3px 7px"},
+  labDesc:{fontSize:12.5,color:"var(--text-muted)",margin:"5px 0 0",lineHeight:1.5},
+  labInline:{display:"inline-flex",alignItems:"center",gap:5,background:"var(--surface-sunken)",border:"none",borderRadius:9,padding:"7px 11px",fontSize:12,fontWeight:600,color:"var(--text)",marginTop:9},
+  labNote:{fontSize:11.5,color:"var(--info)",margin:"8px 0 0",fontWeight:600},
   calHeader:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10},
-  calMonthLabel:{fontWeight:600,fontSize:14.5,fontFamily:"'Source Serif 4',serif"},
+  calMonthLabel:{fontWeight:600,fontSize:14.5,fontFamily:"'Lexend',serif"},
   calGrid:{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:4,marginBottom:10},
-  calDowLabel:{fontSize:10.5,color:"#A8978A",textAlign:"center",paddingBottom:4},
-  calDay:{aspectRatio:"1",border:"none",background:"#FAF6EE",borderRadius:11,fontSize:13,fontWeight:500,color:"#1B2A4A",position:"relative",display:"flex",alignItems:"center",justifyContent:"center"},
-  calDaySelected:{background:"#1B2A4A",color:"#FAF6EE"},
-  calDayToday:{border:"1.5px solid #C15B3C"},
+  calDowLabel:{fontSize:10.5,color:"var(--text-muted)",textAlign:"center",paddingBottom:4},
+  calDay:{aspectRatio:"1",border:"none",background:"var(--bg)",borderRadius:11,fontSize:13,fontWeight:500,color:"var(--text)",position:"relative",display:"flex",alignItems:"center",justifyContent:"center"},
+  calDaySelected:{background:"var(--primary)",color:"var(--on-primary)"},
+  calDayToday:{border:"1.5px solid var(--error)"},
   calDayDisabled:{opacity:0.3,cursor:"default"},
-  calDot:{position:"absolute",bottom:4,width:4,height:4,borderRadius:"50%",background:"#6B8F71"},
-  calLegend:{display:"flex",alignItems:"center",gap:6,fontSize:11.5,color:"#A8978A"},
-  moodBtnLg:{flex:1,background:"#FAF6EE",border:"1.5px solid #EADFCB",borderRadius:14,padding:"13px 0",fontSize:25,lineHeight:1},
-  moodBtnLgActive:{background:"#F1EADA",border:"1.5px solid #1B2A4A",transform:"translateY(-2px)"},
+  calDot:{position:"absolute",bottom:4,width:4,height:4,borderRadius:"50%",background:"var(--primary)"},
+  calLegend:{display:"flex",alignItems:"center",gap:6,fontSize:11.5,color:"var(--text-muted)"},
+  moodBtnLg:{flex:1,background:"var(--bg)",border:"1.5px solid var(--line)",borderRadius:14,padding:"13px 0",fontSize:25,lineHeight:1},
+  moodBtnLgActive:{background:"var(--surface-sunken)",border:"1.5px solid var(--text)",transform:"translateY(-2px)"},
   toggle:{width:44,height:26,borderRadius:13,border:"none",padding:3,display:"flex",alignItems:"center",flexShrink:0,boxShadow:"inset 0 1px 3px rgba(0,0,0,0.15)"},
   toggleKnob:{width:20,height:20,borderRadius:"50%",background:"#FFF",transition:"transform 0.22s cubic-bezier(.4,0,.2,1)",boxShadow:"0 1px 3px rgba(0,0,0,0.3)"},
   slider:{width:"100%"},
   chipRow:{display:"flex",flexWrap:"wrap",gap:6,marginBottom:14},
-  chip:{background:"#FAF6EE",border:CARD_BORDER,borderRadius:20,padding:"7px 13px",fontSize:12.5,fontWeight:500,color:"#6B6354"},
-  chipActive:{background:"#1B2A4A",color:"#FAF6EE",border:"1px solid #1B2A4A"},
-  dayBtn:{width:35,height:35,borderRadius:"50%",border:CARD_BORDER,background:"#FAF6EE",fontSize:11,fontWeight:600,color:"#6B6354"},
-  dayBtnActive:{background:"#6B8F71",color:"#FFF",border:"1px solid #6B8F71"},
-  navBar:{position:"fixed",bottom:16,left:"50%",transform:"translateX(-50%)",display:"flex",gap:2,background:"rgba(255,253,248,0.82)",backdropFilter:"blur(16px) saturate(1.2)",WebkitBackdropFilter:"blur(16px) saturate(1.2)",border:"1px solid rgba(255,255,255,0.6)",borderRadius:22,padding:6,boxShadow:SH.nav,width:"calc(100% - 28px)",maxWidth:420},
+  chip:{background:"var(--bg)",border:CARD_BORDER,borderRadius:20,padding:"7px 13px",fontSize:12.5,fontWeight:500,color:"var(--text-muted)"},
+  chipActive:{background:"var(--primary)",color:"var(--on-primary)",border:"1px solid var(--text)"},
+  dayBtn:{width:35,height:35,borderRadius:"50%",border:CARD_BORDER,background:"var(--bg)",fontSize:11,fontWeight:600,color:"var(--text-muted)"},
+  dayBtnActive:{background:"var(--primary)",color:"#FFF",border:"1px solid var(--primary)"},
+  navBar:{position:"fixed",bottom:16,left:"50%",transform:"translateX(-50%)",display:"flex",gap:2,background:"var(--surface)",backdropFilter:"blur(16px) saturate(1.2)",WebkitBackdropFilter:"blur(16px) saturate(1.2)",border:"1px solid var(--line)",borderRadius:22,padding:6,boxShadow:SH.nav,width:"calc(100% - 28px)",maxWidth:420},
   navBtn:{flex:1,display:"flex",flexDirection:"column",alignItems:"center",gap:3,background:"transparent",border:"none",borderRadius:16,padding:"9px 2px"},
-  navBtnActive:{background:"linear-gradient(135deg,#22345A,#1B2A4A)",boxShadow:"0 6px 14px -6px rgba(27,42,74,0.6)"},
+  navBtnActive:{background:"var(--primary)",boxShadow:"0 6px 14px -6px rgba(34,81,47,0.6)"},
   navLabel:{fontSize:9.5,fontWeight:600,letterSpacing:0.2},
-  overlay:{position:"fixed",inset:0,background:"rgba(27,42,74,0.42)",backdropFilter:"blur(3px)",WebkitBackdropFilter:"blur(3px)",display:"flex",alignItems:"flex-end",zIndex:50,animation:"fade-in .2s ease"},
-  modal:{background:"#FAF6EE",width:"100%",maxWidth:480,margin:"0 auto",borderRadius:"26px 26px 0 0",padding:"26px 20px 32px",position:"relative",maxHeight:"88vh",overflowY:"auto",boxShadow:"0 -12px 40px -12px rgba(27,42,74,0.35)",animation:"sheet-up .28s cubic-bezier(.2,.8,.2,1)"},
-  modalTitle:{fontFamily:"'Source Serif 4',serif",fontSize:23,fontWeight:700,margin:"0 0 4px",letterSpacing:-0.3},
-  modalSub:{fontSize:13,color:"#A8978A",margin:"0 0 18px",lineHeight:1.5},
+  overlay:{position:"fixed",inset:0,background:"rgba(20,25,20,0.42)",backdropFilter:"blur(3px)",WebkitBackdropFilter:"blur(3px)",display:"flex",alignItems:"flex-end",zIndex:50,animation:"fade-in .2s ease"},
+  modal:{background:"var(--bg)",width:"100%",maxWidth:480,margin:"0 auto",borderRadius:"26px 26px 0 0",padding:"26px 20px 32px",position:"relative",maxHeight:"88vh",overflowY:"auto",boxShadow:"0 -12px 40px -12px rgba(34,81,47,0.35)",animation:"sheet-up .28s cubic-bezier(.2,.8,.2,1)"},
+  modalTitle:{fontFamily:"'Lexend',serif",fontSize:23,fontWeight:600,margin:"0 0 4px",letterSpacing:-0.3},
+  modalSub:{fontSize:13,color:"var(--text-muted)",margin:"0 0 18px",lineHeight:1.5},
   closeBtn:{position:"absolute",top:18,right:18,background:"#FFF",border:CARD_BORDER,borderRadius:"50%",width:31,height:31,display:"flex",alignItems:"center",justifyContent:"center",zIndex:2,boxShadow:SH.soft},
-  label:{fontSize:11.5,color:"#6B6354",fontWeight:600,marginBottom:4,display:"block"},
+  label:{fontSize:11.5,color:"var(--text-muted)",fontWeight:600,marginBottom:4,display:"block"},
   input:{width:"100%",border:CARD_BORDER,borderRadius:11,padding:"11px 12px",fontSize:13.5,marginBottom:14,background:"#FFF"},
   threeCol:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:8},
-  segment:{display:"flex",gap:6,background:"#EFE7D6",borderRadius:13,padding:4,marginBottom:16},
-  segmentBtn:{flex:1,background:"transparent",border:"none",borderRadius:10,padding:"9px 0",fontSize:13,fontWeight:600,color:"#6B6354"},
-  segmentBtnActive:{background:"#FFF",color:"#1B2A4A",boxShadow:SH.soft},
-  primaryBtn:{width:"100%",background:"linear-gradient(135deg,#243863,#1B2A4A)",color:"#FAF6EE",border:"none",borderRadius:14,padding:"15px",fontSize:14.5,fontWeight:600,marginBottom:12,display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:SH.btn,letterSpacing:0.2},
-  successBtn:{background:"linear-gradient(135deg,#78A07E,#6B8F71)"},
-  dashedBtn:{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"rgba(255,255,255,0.5)",border:"1.5px dashed #D0C4AC",color:"#6B6354",borderRadius:14,padding:"13px",fontSize:14,fontWeight:500,marginBottom:12},
+  segment:{display:"flex",gap:6,background:"var(--surface-sunken)",borderRadius:13,padding:4,marginBottom:16},
+  segmentBtn:{flex:1,background:"transparent",border:"none",borderRadius:10,padding:"9px 0",fontSize:13,fontWeight:600,color:"var(--text-muted)"},
+  segmentBtnActive:{background:"#FFF",color:"var(--primary)",boxShadow:SH.soft},
+  primaryBtn:{width:"100%",background:"linear-gradient(135deg,var(--info),var(--text))",color:"var(--on-primary)",border:"none",borderRadius:14,padding:"15px",fontSize:14.5,fontWeight:600,marginBottom:12,display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxShadow:SH.btn,letterSpacing:0.2},
+  successBtn:{background:"linear-gradient(135deg,#78A07E,var(--primary))"},
+  dashedBtn:{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",gap:8,background:"rgba(255,255,255,0.5)",border:"1.5px dashed #D0C4AC",color:"var(--text-muted)",borderRadius:14,padding:"13px",fontSize:14,fontWeight:500,marginBottom:12},
   iconBtn:{background:"transparent",border:"none",padding:6,borderRadius:8},
-  editBtn:{display:"inline-flex",alignItems:"center",gap:4,background:"#F3ECDD",border:"none",borderRadius:9,padding:"7px 11px",fontSize:12,fontWeight:600,color:"#1B2A4A",flexShrink:0},
-  catMgRow:{display:"flex",alignItems:"center",gap:8,padding:"8px 0",borderBottom:"1px solid #F1EADA"},
-  catMgIcon:{width:32,height:32,borderRadius:9,border:CARD_BORDER,background:"#FAF6EE",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
-  miniArrow:{width:26,height:26,borderRadius:7,border:CARD_BORDER,background:"#FAF6EE",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
-  addCatWrap:{marginTop:12,paddingTop:12,borderTop:"1px solid #F1EADA"},
+  editBtn:{display:"inline-flex",alignItems:"center",gap:4,background:"var(--surface-sunken)",border:"none",borderRadius:9,padding:"7px 11px",fontSize:12,fontWeight:600,color:"var(--text)",flexShrink:0},
+  catMgRow:{display:"flex",alignItems:"center",gap:8,padding:"8px 0",borderBottom:"1px solid var(--surface-sunken)"},
+  catMgIcon:{width:32,height:32,borderRadius:9,border:CARD_BORDER,background:"var(--bg)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
+  miniArrow:{width:26,height:26,borderRadius:7,border:CARD_BORDER,background:"var(--bg)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0},
+  addCatWrap:{marginTop:12,paddingTop:12,borderTop:"1px solid var(--surface-sunken)"},
   iconPickRow:{display:"flex",gap:6,marginBottom:8,flexWrap:"wrap"},
-  iconPickOpt:{width:34,height:34,borderRadius:9,border:CARD_BORDER,background:"#FAF6EE",display:"flex",alignItems:"center",justifyContent:"center"},
-  iconPickOptOn:{background:"#1B2A4A",border:"1px solid #1B2A4A"},
+  iconPickOpt:{width:34,height:34,borderRadius:9,border:CARD_BORDER,background:"var(--bg)",display:"flex",alignItems:"center",justifyContent:"center"},
+  iconPickOptOn:{background:"var(--primary)",border:"1px solid var(--primary)"},
   canvasWrap:{width:"100%",borderRadius:16,overflow:"hidden",border:CARD_BORDER,marginBottom:16,boxShadow:SH.card},
   canvasImg:{width:"100%",display:"block"},
   statStrip:{display:"flex",gap:8,marginTop:14},
-  statCell:{flex:1,background:"#FAF6EE",border:CARD_BORDER,borderRadius:12,padding:"9px 6px",display:"flex",flexDirection:"column",alignItems:"center",gap:2},
-  statLabel:{fontSize:9.5,color:"#A8978A",textTransform:"uppercase",letterSpacing:0.5},
-  statVal:{fontSize:12.5,fontWeight:700,fontFamily:"'JetBrains Mono',monospace"},
-  measUnit:{fontSize:10,color:"#A8978A",display:"block",textAlign:"center",marginTop:2},
-  th:{textAlign:"center",padding:"6px 8px",fontSize:9.5,color:"#A8978A",fontWeight:700,textTransform:"uppercase",borderBottom:"1px solid #EADFCB",whiteSpace:"nowrap"},
-  td:{textAlign:"center",padding:"7px 8px",fontSize:11.5,fontFamily:"'JetBrains Mono',monospace",borderBottom:"1px solid #F1EADA",whiteSpace:"nowrap"},
-  tdL:{textAlign:"left",padding:"7px 8px",fontSize:12,fontWeight:600,borderBottom:"1px solid #F1EADA",whiteSpace:"nowrap"},
+  statCell:{flex:1,background:"var(--bg)",border:CARD_BORDER,borderRadius:12,padding:"9px 6px",display:"flex",flexDirection:"column",alignItems:"center",gap:2},
+  statLabel:{fontSize:9.5,color:"var(--text-muted)",textTransform:"none",letterSpacing:0.5},
+  statVal:{fontSize:12.5,fontWeight:600,fontFamily:"'DM Mono',monospace"},
+  measUnit:{fontSize:10,color:"var(--text-muted)",display:"block",textAlign:"center",marginTop:2},
+  th:{textAlign:"center",padding:"6px 8px",fontSize:9.5,color:"var(--text-muted)",fontWeight:600,textTransform:"none",borderBottom:"1px solid var(--line)",whiteSpace:"nowrap"},
+  td:{textAlign:"center",padding:"7px 8px",fontSize:11.5,fontFamily:"'DM Mono',monospace",borderBottom:"1px solid var(--surface-sunken)",whiteSpace:"nowrap"},
+  tdL:{textAlign:"left",padding:"7px 8px",fontSize:12,fontWeight:600,borderBottom:"1px solid var(--surface-sunken)",whiteSpace:"nowrap"},
   select:{width:"100%",border:CARD_BORDER,borderRadius:11,padding:"11px 12px",fontSize:13.5,marginBottom:14,background:"#FFF",WebkitAppearance:"none",appearance:"none"},
 };
 
