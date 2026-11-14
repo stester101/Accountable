@@ -1,0 +1,67 @@
+name: Android APK
+on:
+  push:
+    branches: [main, 'design/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Run regression tests
+        run: TZ=Europe/London node test/regression.test.cjs
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.11.1' }
+      - name: Install SDK
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Restore development signing key
+        uses: actions/cache@v4
+        with:
+          path: .signing/accountable-debug.keystore
+          key: accountable-development-signing-v1
+      - name: Ensure persistent development signing key
+        run: |
+          mkdir -p .signing
+          if [ ! -f .signing/accountable-debug.keystore ]; then
+            keytool -genkeypair -keystore .signing/accountable-debug.keystore -storepass android -keypass android -alias androiddebugkey -dname 'CN=Android Debug,O=Android,C=US' -keyalg RSA -keysize 2048 -validity 10000
+          fi
+      - name: Build debug APK
+        run: gradle :app:assembleDebug --no-daemon
+      - name: Verify packaged HTML matches source
+        run: |
+          python3 - <<'PY'
+          import zipfile
+          from pathlib import Path
+          with zipfile.ZipFile('app/build/outputs/apk/debug/app-debug.apk') as apk:
+              assert apk.read('assets/index.html') == Path('index.html').read_bytes()
+              for n in ('react.production.min.js','react-dom.production.min.js','babel.min.js'):
+                  assert apk.read('assets/vendor/'+n) == Path('vendor/'+n).read_bytes()
+          PY
+      - name: Name APK
+        run: cp app/build/outputs/apk/debug/app-debug.apk Accountable.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Accountable-APK
+          path: Accountable.apk
+      - name: Publish test APK (pre-release)
+        if: github.ref != 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "test-${{ github.run_number }}" Accountable.apk --target "$GITHUB_SHA" --prerelease --title "Accountable TEST build ${{ github.run_number }} (${GITHUB_REF_NAME})" --notes "Test build from branch ${GITHUB_REF_NAME}. Install Accountable.apk on Android. Data lives on the device; export a JSON backup from settings before uninstalling."
+      - name: Publish APK (main)
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "android-${{ github.run_number }}" Accountable.apk --target "$GITHUB_SHA" --title "Accountable Android build ${{ github.run_number }}" --notes "Install Accountable.apk on Android."

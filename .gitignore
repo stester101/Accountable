@@ -1,0 +1,6 @@
+.gradle/
+build/
+app/build/
+.signing/
+local.properties
+*.apk

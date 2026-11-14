@@ -2572,9 +2572,9 @@ ReactDOM.createRoot(_rootEl).render(<Accountable/>);
       })();
     });
   }
-  var REACT=["https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js","https://unpkg.com/react@18.2.0/umd/react.production.min.js","https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"];
-  var REACTDOM=["https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js","https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js","https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"];
-  var BABEL=["https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js","https://unpkg.com/@babel/standalone@7.24.7/babel.min.js","https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.7/babel.min.js"];
+  var REACT=["vendor/react.production.min.js","https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js","https://unpkg.com/react@18.2.0/umd/react.production.min.js","https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"];
+  var REACTDOM=["vendor/react-dom.production.min.js","https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js","https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js","https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"];
+  var BABEL=["vendor/babel.min.js","https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js","https://unpkg.com/@babel/standalone@7.24.7/babel.min.js","https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.7/babel.min.js"];
   loadScript("React", REACT)
     .then(function(){ return loadScript("React DOM", REACTDOM); })
     .then(function(){ return loadScript("compiler", BABEL); })
